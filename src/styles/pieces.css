@@ -1,0 +1,147 @@
+.pieces {
+  width: 680px;
+  height: 680px;
+  position: absolute;
+  margin-top: 20px;
+  top: 0;
+}
+
+.piece {
+  width: 86px;
+  height: 86px;
+  position: absolute;
+}
+
+.piece img {
+  padding: 8px;
+  width: 70px;
+  height: 70px;
+}
+
+/** Pieces position on regular display mode **/
+
+.game-board.regular .columnB {
+  left: 86px;
+}
+
+.game-board.regular .columnC {
+  left: 170px;
+}
+
+.game-board.regular .columnD {
+  left: 254px;
+}
+
+.game-board.regular .columnE {
+  left: 339px;
+}
+
+.game-board.regular .columnF {
+  left: 425px;
+}
+
+.game-board.regular .columnG {
+  left: 509px;
+}
+
+.game-board.regular .columnH {
+  left: 595px;
+}
+
+.game-board.regular .row1 {
+  /* 85*7  */
+  top: 595px;
+}
+
+.game-board.regular .row2 {
+  /* 85*6  */
+  top: 509px;
+}
+
+.game-board.regular .row3 {
+  /* 85*5  */
+  top: 425px;
+}
+
+.game-board.regular .row4 {
+  /* 85*4  */
+  top: 340px;
+}
+
+.game-board.regular .row5 {
+  /* 85*3  */
+  top: 255px;
+}
+
+.game-board.regular .row6 {
+  top: 170px;
+}
+
+.game-board.regular .row7 {
+  top: 85px;
+}
+
+
+/** Pieces position on reverse display mode **/
+
+.game-board.reverse .columnG {
+  left: 86px;
+}
+
+.game-board.reverse .columnF {
+  left: 170px;
+}
+
+.game-board.reverse .columnE {
+  left: 254px;
+}
+
+.game-board.reverse .columnD {
+  left: 339px;
+}
+
+.game-board.reverse .columnC {
+  left: 425px;
+}
+
+.game-board.reverse .columnB {
+  left: 509px;
+}
+
+.game-board.reverse .columnA {
+  left: 595px;
+}
+
+.game-board.reverse .row8 {
+  /* 85*7  */
+  top: 595px;
+}
+
+.game-board.reverse .row7 {
+  /* 85*6  */
+  top: 509px;
+}
+
+.game-board.reverse .row6 {
+  /* 85*5  */
+  top: 425px;
+}
+
+.game-board.reverse .row5 {
+  /* 85*4  */
+  top: 340px;
+}
+
+.game-board.reverse .row4 {
+  /* 85*3  */
+  top: 255px;
+}
+
+.game-board.reverse .row3 {
+  top: 170px;
+}
+
+.game-board.reverse .row2 {
+  top: 85px;
+}
+

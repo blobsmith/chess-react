@@ -1,0 +1,47 @@
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.square {
+  background: #fff;
+  float: left;
+  font-size: 9px;
+  font-weight: bold;
+  line-height: 84px;
+  height: 84px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: right;
+  width: 84px;
+  border: 1px solid gray;
+  position: relative;
+}
+
+.square-label {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  line-height: 9px;
+}
+
+.square.dark .square-label {
+  color: white;
+}
+
+.square.dark {
+  background-color: darkgreen;
+}
+
+.square.light {
+  background-color: #ffffee;
+}
+
+.square:focus {
+  outline: none;
+}
