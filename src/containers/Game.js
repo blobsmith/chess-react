@@ -17,10 +17,10 @@ class Game extends React.Component {
                 'H8': 'Rb',
 
                 /** Knights **/
-                'B1': 'Kw',
-                'G1': 'Kw',
-                'B8': 'Kb',
-                'G8': 'Kb',
+                'B1': 'Nw',
+                'G1': 'Nw',
+                'B8': 'Nb',
+                'G8': 'Nb',
 
                 /** Bishops **/
                 'C1': 'Bw',

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Square from '../components/Square';
 import '../styles/board.css';
 
@@ -15,14 +14,14 @@ class Board extends React.Component {
 
         const squares = numbers.map((number, index) => (
             <div className={"board-row row-" + number} >
-                <Square cell={letters[0] + number} background={number%2 === 0 ? 'dark' : 'light' } />
-                <Square cell={letters[1] + number} background={number%2 !== 0 ? 'dark' : 'light' } />
-                <Square cell={letters[2] + number} background={number%2 === 0 ? 'dark' : 'light' } />
-                <Square cell={letters[3] + number} background={number%2 !== 0 ? 'dark' : 'light' } />
-                <Square cell={letters[4] + number} background={number%2 === 0 ? 'dark' : 'light' } />
-                <Square cell={letters[5] + number} background={number%2 !== 0 ? 'dark' : 'light' } />
-                <Square cell={letters[6] + number} background={number%2 === 0 ? 'dark' : 'light' } />
-                <Square cell={letters[7] + number} background={number%2 !== 0 ? 'dark' : 'light' } />
+                <Square key={letters[0] + number} cell={letters[0] + number} background={number%2 === 0 ? 'dark' : 'light' } />
+                <Square key={letters[1] + number}  cell={letters[1] + number} background={number%2 !== 0 ? 'dark' : 'light' } />
+                <Square key={letters[2] + number}  cell={letters[2] + number} background={number%2 === 0 ? 'dark' : 'light' } />
+                <Square key={letters[3] + number}  cell={letters[3] + number} background={number%2 !== 0 ? 'dark' : 'light' } />
+                <Square key={letters[4] + number}  cell={letters[4] + number} background={number%2 === 0 ? 'dark' : 'light' } />
+                <Square key={letters[5] + number}  cell={letters[5] + number} background={number%2 !== 0 ? 'dark' : 'light' } />
+                <Square key={letters[6] + number}  cell={letters[6] + number} background={number%2 === 0 ? 'dark' : 'light' } />
+                <Square key={letters[7] + number}  cell={letters[7] + number} background={number%2 !== 0 ? 'dark' : 'light' } />
             </div>
         ));
 

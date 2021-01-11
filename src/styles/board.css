@@ -36,6 +36,13 @@
 
 .square.dark {
   background-color: darkgreen;
+
+  /*
+  rose: darkmagenta
+  bleu: #003962
+  marron: #582900
+  vert: darkgreen
+*/
 }
 
 .square.light {
