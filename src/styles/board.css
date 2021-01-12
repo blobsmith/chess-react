@@ -52,3 +52,7 @@
 .square:focus {
   outline: none;
 }
+
+.square-selected {
+  background-color: yellowgreen
+}

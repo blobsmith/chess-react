@@ -1,10 +1,10 @@
 import React from 'react';
-import Rook from './Rook';
-import Knight from './Knight';
-import Bishop from './Bishop';
-import Queen from './Queen';
-import King from './King';
-import Pawn from './Pawn';
+import Rook from './pieces/Rook';
+import Knight from './pieces/Knight';
+import Bishop from './pieces/Bishop';
+import Queen from './pieces/Queen';
+import King from './pieces/King';
+import Pawn from './pieces/Pawn';
 import '../styles/pieces.css';
 
 
@@ -21,51 +21,66 @@ class Pieces extends React.Component {
                                     piece = <Pawn
                                         key={item}
                                         color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
-                                        position={position}/>;
+                                        position={position}
+                                        name={name}
+                                    />;
+
                                     break;
 
                             case 'R':
                                     piece = <Rook
                                         key={item}
                                         color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
-                                        position={position}/>;
+                                        position={position}
+                                        onClick={() => (this.handleSelectPiece())}
+                                        name={name}
+                                    />;
                                     break;
 
                             case 'N':
                                     piece = <Knight
                                         key={item}
                                         color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
-                                        position={position}/>;
+                                        position={position}
+                                        name={name}
+                                    />;
                                     break;
 
                             case 'B':
                                     piece = <Bishop
                                         key={item}
                                         color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
-                                        position={position}/>;
+                                        position={position}
+                                        name={name}
+                                    />;
                                     break;
 
                             case 'Q':
                                     piece = <Queen
                                         key={item}
                                         color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
-                                        position={position}/>;
+                                        position={position}
+                                        name={name}
+                                    />;
                                     break;
 
                             case 'K':
                                     piece = <King
                                         key={name}
                                         color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
-                                        position={position}/>;
+                                        position={position}
+                                        name={name}
+                                    />;
                                     break;
 
                             default:
                                     piece = <Pawn
                                         key={item}
                                         color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
-                                        position={position}/>;
+                                        position={position}
+                                        name={name}
+                                    />;
                                     break;
-
                     }
                     pieces.push(piece);
             });
