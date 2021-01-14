@@ -4,8 +4,8 @@ const pieceReducer = (state = '', action) => {
     let newSelectedPiece = state;
     switch(action.type) {
         case 'SELECT_PIECE':
-            if (action.piece_type !== state) {
-                newSelectedPiece = action.piece_type;
+            if (action.selectedPiece !== state) {
+                newSelectedPiece = action.selectedPiece;
             }
             else {
                 newSelectedPiece = '';

@@ -1,24 +1,23 @@
-export const selectPieceAction = (piece_type) => ({
+export const selectPieceAction = (selectedPiece) => ({
   type: 'SELECT_PIECE',
-  piece_type: piece_type
+  selectedPiece: selectedPiece
 });
 
-export const movePieceAction = (piece_type, toPosition) => ({
+export const movePieceAction = (selectedPiece, toPosition) => ({
   type: 'MOVE_PIECE',
-  piece_type: piece_type,
+  selectedPiece: selectedPiece,
   toPosition: toPosition
 });
 
-export const castlingAction = (piece_type, toPosition) => ({
+export const castlingAction = (selectedPiece, toPosition) => ({
   type: 'CASTLING',
-  piece_type: piece_type,
+  selectedPiece: selectedPiece,
   toPosition: toPosition
 });
 
-export const pawnPromotionAction = (piece_type) => ({
+export const pawnPromotionAction = (selectedPiece) => ({
   type: 'PAWN_PROMOTION',
-  piece_type: piece_type,
-  toPosition: toPosition
+  selectedPiece: selectedPiece
 });
 
 

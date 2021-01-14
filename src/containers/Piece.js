@@ -1,7 +1,8 @@
 import React from 'react';
 import PieceComponent from '../components/Piece';
-import { selectPieceAction } from '../redux/actions';
+import { selectPieceAction, movePieceAction } from '../redux/actions';
 import { connect } from 'react-redux';
+import piecesService from '../services/PiecesService';
 
 class Piece extends React.Component {
 
@@ -9,17 +10,24 @@ class Piece extends React.Component {
         this.props.select(this.props.name+'-'+this.props.position);
     }
 
+    handleMove(position) {
+        this.props.move(this.props.selectedPiece, position);
+    }
+
     renderPiece() {
         const column = this.props.position.substring(0,1);
         const row = this.props.position.substring(1,2);
-        const piece = this.props.color === 'white' ? this.props.white : this.props.black;
+        const piece = this.props.color === piecesService.WHITE_PIECE ? this.props.white : this.props.black;
 
         return (
                 <PieceComponent
-                selected={this.props.selectedPiece === (this.props.name+'-'+this.props.position)}
+                selected={this.props.selectedPiece === piecesService.getPieceName(this.props.name, this.props.position)}
                 image={piece}
                 className={'row'+ row + ' column' + column}
-                onClick={() => (this.handleSelect())}
+                onClick={() => {
+                    this.handleMove(this.props.position);
+                    this.handleSelect();
+                }}
             />
         );
     }
@@ -37,8 +45,11 @@ const mapStatesToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        select: (piece_type) => {
-            dispatch(selectPieceAction(piece_type));
+        select: (selectedPiece) => {
+            dispatch(selectPieceAction(selectedPiece));
+        },
+        move: (selectedPiece, toPosition) => {
+            dispatch(movePieceAction(selectedPiece, toPosition));
         },
     }
 };

@@ -6,7 +6,7 @@ import Queen from './pieces/Queen';
 import King from './pieces/King';
 import Pawn from './pieces/Pawn';
 import '../styles/pieces.css';
-
+import piecesService from '../services/PiecesService';
 
 class Pieces extends React.Component {
 
@@ -15,70 +15,72 @@ class Pieces extends React.Component {
             Object.entries(this.props.pieces).forEach((item, key) => {
                     let piece;
                     const position = item[0];
-                    const name = item[1];
-                    switch (name.substring(0, 1)) {
-                            case 'P':
+                    const nameAndColor = item[1];
+                    const color = nameAndColor.substring(1, 2);
+                    const name = nameAndColor.substring(0, 1);
+                    switch (name) {
+                            case piecesService.PAWN:
                                     piece = <Pawn
                                         key={item}
-                                        color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
+                                        color={color}
                                         position={position}
-                                        name={name}
+                                        name={nameAndColor}
                                     />;
 
                                     break;
 
-                            case 'R':
+                            case piecesService.ROOK:
                                     piece = <Rook
                                         key={item}
-                                        color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
+                                        color={color}
                                         position={position}
                                         onClick={() => (this.handleSelectPiece())}
-                                        name={name}
+                                        name={nameAndColor}
                                     />;
                                     break;
 
-                            case 'N':
+                            case piecesService.KNIGHT:
                                     piece = <Knight
                                         key={item}
-                                        color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
+                                        color={color}
                                         position={position}
-                                        name={name}
+                                        name={nameAndColor}
                                     />;
                                     break;
 
-                            case 'B':
+                            case piecesService.BISHOP:
                                     piece = <Bishop
                                         key={item}
-                                        color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
+                                        color={color}
                                         position={position}
-                                        name={name}
+                                        name={nameAndColor}
                                     />;
                                     break;
 
-                            case 'Q':
+                            case piecesService.QUEEN:
                                     piece = <Queen
                                         key={item}
-                                        color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
+                                        color={color}
                                         position={position}
-                                        name={name}
+                                        name={nameAndColor}
                                     />;
                                     break;
 
-                            case 'K':
+                            case piecesService.KING:
                                     piece = <King
                                         key={name}
-                                        color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
+                                        color={color}
                                         position={position}
-                                        name={name}
+                                        name={nameAndColor}
                                     />;
                                     break;
 
                             default:
                                     piece = <Pawn
                                         key={item}
-                                        color={(name.substring(1, 2) === 'w' ? 'white' : 'black')}
+                                        color={color}
                                         position={position}
-                                        name={name}
+                                        name={nameAndColor}
                                     />;
                                     break;
                     }
