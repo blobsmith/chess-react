@@ -19,7 +19,7 @@ class Board extends React.Component {
         }
 
         const squares = numbers.map((number, index) => (
-            <div className={"board-row row-" + number} >
+            <div key={'row'+number} className={"board-row row-" + number} >
                 <Square 
                     key={letters[0] + number} 
                     cell={letters[0] + number} 
@@ -72,7 +72,7 @@ class Board extends React.Component {
         ));
 
         return (
-            <div >
+            <div key="board-squares" >
                 { squares }
             </div>
         );

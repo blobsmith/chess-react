@@ -80,7 +80,7 @@ class PiecesService {
      * 
      * @param {string} name 
      *      the string name of a piece.
-     * @param {string} name 
+     * @param {string} position 
      *      the string position of a piece.
      */
     getPieceName = (name, position) => {

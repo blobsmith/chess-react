@@ -3,11 +3,26 @@ export const selectPieceAction = (selectedPiece) => ({
   selectedPiece: selectedPiece
 });
 
-export const movePieceAction = (selectedPiece, toPosition) => ({
-  type: 'MOVE_PIECE',
-  selectedPiece: selectedPiece,
-  toPosition: toPosition
-});
+export const storeAvailableMovementsAction = (selectedPiece) => (
+  (dispatch, getState) => {
+    dispatch({
+      type: 'GET_AVAILABLE_MOVEMENTS',
+      selectedPiece: selectedPiece,
+      piecesPosition: getState().piecesPosition
+    });
+  }
+);
+
+export const movePieceAction = (selectedPiece, toPosition) => (
+  (dispatch, getState) => {
+    dispatch({
+      type: 'MOVE_PIECE',
+      selectedPiece: selectedPiece,
+      toPosition: toPosition,
+      availableMovements: getState().availableMovements
+    });
+  }
+);
 
 export const castlingAction = (selectedPiece, toPosition) => ({
   type: 'CASTLING',

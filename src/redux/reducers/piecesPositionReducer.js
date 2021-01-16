@@ -7,7 +7,7 @@ const piecesPositionReducer = (state, action) => {
     switch(action.type) {
         case 'MOVE_PIECE':
             if (action.selectedPiece) {
-                return movementsService.move(action.selectedPiece, action.toPosition, state);
+                return movementsService.move(action.selectedPiece, action.toPosition, action.availableMovements, state);
             }
             break;
 

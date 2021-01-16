@@ -68,7 +68,7 @@ class Pieces extends React.Component {
 
                             case piecesService.KING:
                                     piece = <King
-                                        key={name}
+                                        key={item}
                                         color={color}
                                         position={position}
                                         name={nameAndColor}

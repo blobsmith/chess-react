@@ -1,13 +1,13 @@
 import React from 'react';
 import PieceComponent from '../components/Piece';
-import { selectPieceAction, movePieceAction } from '../redux/actions';
+import { selectPieceAction, storeAvailableMovementsAction, movePieceAction } from '../redux/actions';
 import { connect } from 'react-redux';
 import piecesService from '../services/PiecesService';
 
 class Piece extends React.Component {
 
     handleSelect() {
-        this.props.select(this.props.name+'-'+this.props.position);
+        this.props.select(piecesService.getPieceName(this.props.name, this.props.position));
     }
 
     handleMove(position) {
@@ -21,6 +21,7 @@ class Piece extends React.Component {
 
         return (
                 <PieceComponent
+                pieceKey={piecesService.getPieceName(this.props.name, this.props.position)}
                 selected={this.props.selectedPiece === piecesService.getPieceName(this.props.name, this.props.position)}
                 image={piece}
                 className={'row'+ row + ' column' + column}
@@ -39,7 +40,7 @@ class Piece extends React.Component {
 
 const mapStatesToProps = (state) => {
     return {
-        selectedPiece: state.selectedPiece,
+        selectedPiece: state.selectedPiece
     }
 };
 
@@ -47,6 +48,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         select: (selectedPiece) => {
             dispatch(selectPieceAction(selectedPiece));
+            dispatch(storeAvailableMovementsAction(selectedPiece));
         },
         move: (selectedPiece, toPosition) => {
             dispatch(movePieceAction(selectedPiece, toPosition));
