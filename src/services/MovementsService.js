@@ -1,7 +1,9 @@
+import { $CombinedState } from 'redux';
 import piecesService from './PiecesService';
 
 class MovementsService {
     constructor() {
+        
         /**
          * Array of all lettre columns of the board.
          */
@@ -63,12 +65,6 @@ class MovementsService {
         this.FILLED_BY_OWN = 'filled-by-own';
     }
 
-
-
-    isCheck = () => {
-
-    }
-
     isCheckMat = () => {
 
     }
@@ -93,12 +89,40 @@ class MovementsService {
         return this.EMPTY;
     }
 
+    /**
+     * Set the new position in the array of available positions.
+     *
+     * @param {string} newPosition
+     *      New position of a piece.
+     */
     pushNewPosition = (newPosition) => {
         const squareStatus = this.checkSquareAvailability(newPosition);
         if (squareStatus !== this.FILLED_BY_OWN) {
             this.availableMovements.push(newPosition);
         }
         return squareStatus;
+    }
+
+    /**
+     * Get all movements of pieces of the same color.
+     * 
+     * @param {String} color 
+     *      Color of pieces to verify.
+     * @param {Object} piecesMap 
+     *      Location map of all pieces.
+     */
+    getPiecesMovements = (color, piecesMap) => {
+        let movements = [];
+        for (const position in piecesMap) {
+            const pieceName = piecesMap[position];
+            const pieceNameAndPosition = piecesService.getPieceName(pieceName, position);
+            const pieceColor = piecesService.getPieceColor(pieceNameAndPosition);
+            if (pieceColor === color) {
+                const pieceMovements = this.getAvailableMovement(pieceNameAndPosition, piecesMap);
+                movements = movements.concat(pieceMovements);
+            }
+        }
+        return movements;
     }
     
 
@@ -160,18 +184,67 @@ class MovementsService {
         let newPosition;
         if (this.pieceColor === piecesService.WHITE_PIECE) {
             newPosition = this.positionColumn + (parseInt(this.positionRow) + 1);
-            this.pushNewPosition(newPosition);
-            if (parseInt(this.positionRow) === 2) {
-                newPosition = this.positionColumn + (parseInt(this.positionRow) + 2);
+            // Can go straight only if there is no piece in the front of it.
+            if (this.piecesPosition[newPosition] === undefined) {
                 this.pushNewPosition(newPosition);
+                if (parseInt(this.positionRow) === 2) {
+                    newPosition = this.positionColumn + (parseInt(this.positionRow) + 2);
+                    // Can go straight only if there is no piece in the front of it.
+                    if (this.piecesPosition[newPosition] === undefined) {
+                        this.pushNewPosition(newPosition);
+                    }
+                }
             }
+            // Check for upper left position
+            const leftColumn = this.convertToNumber(this.positionColumn) - 1;
+            this.pushPawnDiagonalAsNewPosition(leftColumn, parseInt(this.positionRow) + 1);
+
+            // Check for upper right position
+            const rightColumn = this.convertToNumber(this.positionColumn) + 1;
+            this.pushPawnDiagonalAsNewPosition(rightColumn, parseInt(this.positionRow) + 1);
+            
         }
         else {
             newPosition = this.positionColumn + (parseInt(this.positionRow) - 1);
-            this.pushNewPosition(newPosition);
-            if (parseInt(this.positionRow) === 7 ) {
-                newPosition = this.positionColumn + (parseInt(this.positionRow) - 2);
+            // Can go straight only if there is no piece in the front of it.
+            if (this.piecesPosition[newPosition] === undefined) {
                 this.pushNewPosition(newPosition);
+                if (parseInt(this.positionRow) === 7 ) {
+                    newPosition = this.positionColumn + (parseInt(this.positionRow) - 2);
+                    // Can go straight only if there is no piece in the front of it.
+                    if (this.piecesPosition[newPosition] === undefined) {
+                        this.pushNewPosition(newPosition);
+                    }
+                }
+            }
+            // Check for lower left position
+            const leftColumn = this.convertToNumber(this.positionColumn) - 1;
+            this.pushPawnDiagonalAsNewPosition(leftColumn, parseInt(this.positionRow) - 1);
+
+            // Check for lower right position
+            const rightColumn = this.convertToNumber(this.positionColumn) + 1;
+            this.pushPawnDiagonalAsNewPosition(rightColumn, parseInt(this.positionRow) - 1);
+        }
+    }
+
+    /**
+     * Add a Pawn diagonal position to the available movements.
+     * 
+     * Can go diagonaly only if there is an opponent piece.
+     * 
+     * @param {String} columnNumber 
+     *      Column number of the new position. 
+     * @param {*} rowNumber 
+     *      Row number of the new position.
+     */
+    pushPawnDiagonalAsNewPosition = (columnNumber, rowNumber) => {
+        if (columnNumber < 9 && columnNumber > 0) {
+            const newPosition = this.convertToLetter(columnNumber) + rowNumber;
+            if (this.piecesPosition[newPosition] !== undefined) {
+                const color = piecesService.getPieceColor(this.piecesPosition[newPosition]);
+                if (color !== this.pieceColor) {
+                    this.pushNewPosition(newPosition);
+                }
             }
         }
     }

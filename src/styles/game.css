@@ -19,3 +19,7 @@ ol, ul {
 .game-board {
   margin: auto;
 }
+
+.hidden {
+  display: none;
+}

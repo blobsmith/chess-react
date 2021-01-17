@@ -1,6 +1,6 @@
 import React from 'react';
 import PieceComponent from '../components/Piece';
-import { selectPieceAction, storeAvailableMovementsAction, movePieceAction } from '../redux/actions';
+import { selectPieceAction, movePieceAction } from '../redux/actions';
 import { connect } from 'react-redux';
 import piecesService from '../services/PiecesService';
 
@@ -48,7 +48,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         select: (selectedPiece) => {
             dispatch(selectPieceAction(selectedPiece));
-            dispatch(storeAvailableMovementsAction(selectedPiece));
         },
         move: (selectedPiece, toPosition) => {
             dispatch(movePieceAction(selectedPiece, toPosition));

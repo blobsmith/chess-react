@@ -1,17 +1,12 @@
-export const selectPieceAction = (selectedPiece) => ({
-  type: 'SELECT_PIECE',
-  selectedPiece: selectedPiece
-});
-
-export const storeAvailableMovementsAction = (selectedPiece) => (
+export const selectPieceAction = (selectedPiece) => (
   (dispatch, getState) => {
     dispatch({
-      type: 'GET_AVAILABLE_MOVEMENTS',
+      type: 'SELECT_PIECE',
       selectedPiece: selectedPiece,
       piecesPosition: getState().piecesPosition
     });
   }
-);
+ );
 
 export const movePieceAction = (selectedPiece, toPosition) => (
   (dispatch, getState) => {

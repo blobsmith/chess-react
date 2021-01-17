@@ -12,6 +12,10 @@ const pieceReducer = (state = '', action) => {
             }
             break;
 
+        case 'MOVE_PIECE':
+            newSelectedPiece = '';
+            break;
+
         default:
             newSelectedPiece = state;
     }
