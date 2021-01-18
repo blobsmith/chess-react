@@ -20,8 +20,10 @@ class Piece extends React.Component {
                     this.props.select(piecesService.getPieceName(this.props.name, this.props.position));
                 }
                 else {
-                    // If a piece is selected and click on other piece, check if we have to move it.
-                    this.props.move(this.props.selectedPiece, this.props.position);
+                    // If a piece is selected and click on other piece, check if we have to each the opponent.
+                    if (piecesService.getPieceColor(this.props.selectedPiece) !== this.props.color) {
+                        this.props.move(this.props.selectedPiece, this.props.position);
+                    }
                 }
             }
         }

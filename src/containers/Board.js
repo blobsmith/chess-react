@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 class Board extends React.Component {
 
     handleMove(position) {
-        if (this.props.selectedPiece !== '') {
+        if (this.props.selectedPiece !== '' && this.props.availableMovements.indexOf(position) !== -1) {
             this.props.move(this.props.selectedPiece, position);
         }
     }
