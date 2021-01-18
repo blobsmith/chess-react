@@ -7,9 +7,10 @@ const pieceReducer = (state = '', action) => {
             if (action.selectedPiece !== state) {
                 newSelectedPiece = action.selectedPiece;
             }
-            else {
-                newSelectedPiece = '';
-            }
+            break;
+
+        case 'UNSELECT_PIECE':
+            newSelectedPiece = '';
             break;
 
         case 'MOVE_PIECE':

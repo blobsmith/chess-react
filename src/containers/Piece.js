@@ -1,17 +1,23 @@
 import React from 'react';
 import PieceComponent from '../components/Piece';
-import { selectPieceAction, movePieceAction } from '../redux/actions';
+import { selectPieceAction, unselectPieceAction, movePieceAction } from '../redux/actions';
 import { connect } from 'react-redux';
 import piecesService from '../services/PiecesService';
 
 class Piece extends React.Component {
 
-    handleSelect() {
-        this.props.select(piecesService.getPieceName(this.props.name, this.props.position));
-    }
-
-    handleMove(position) {
-        this.props.move(this.props.selectedPiece, position);
+    handleClick() {
+        if (piecesService.getCurrentPosition(this.props.selectedPiece) === this.props.position) {
+            this.props.unselect();
+        }
+        else {
+            if (this.props.selectedPiece === '') {
+                this.props.select(piecesService.getPieceName(this.props.name, this.props.position));
+            }
+            else {
+                this.props.move(this.props.selectedPiece, this.props.position);
+            }
+        }
     }
 
     renderPiece() {
@@ -26,8 +32,7 @@ class Piece extends React.Component {
                 image={piece}
                 className={'row'+ row + ' column' + column}
                 onClick={() => {
-                    this.handleMove(this.props.position);
-                    this.handleSelect();
+                    this.handleClick();
                 }}
             />
         );
@@ -48,6 +53,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         select: (selectedPiece) => {
             dispatch(selectPieceAction(selectedPiece));
+        },
+        unselect: (selectedPiece) => {
+            dispatch(unselectPieceAction(selectedPiece));
         },
         move: (selectedPiece, toPosition) => {
             dispatch(movePieceAction(selectedPiece, toPosition));

@@ -9,6 +9,10 @@ const movementsReducer = (state = [], action) => {
             }
             break;
 
+        case 'UNSELECT_PIECE':
+            movements = [];
+            break;
+
         case 'MOVE_PIECE':
             movements = [];
             break;

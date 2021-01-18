@@ -7,7 +7,9 @@ import { connect } from 'react-redux';
 class Board extends React.Component {
 
     handleMove(position) {
-        this.props.move(this.props.selectedPiece, position);
+        if (this.props.selectedPiece !== '') {
+            this.props.move(this.props.selectedPiece, position);
+        }
     }
 
     getSquareRef(letter, number) {
@@ -28,7 +30,7 @@ class Board extends React.Component {
                     key={letters[0], number} 
                     cell={letters[0], number} 
                     background={number%2 === 0 ? 'dark' : 'light' } 
-                    onClick={() => (this.handleMove(letters[0], number))}
+                    onClick={() => (this.handleMove(letters[0] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[0] + number) !== -1) ? true : false}
                 />
                 <Square 

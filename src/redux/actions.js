@@ -8,6 +8,10 @@ export const selectPieceAction = (selectedPiece) => (
   }
  );
 
+ export const unselectPieceAction = (selectedPiece) => ({
+  type: 'UNSELECT_PIECE'
+});
+
 export const movePieceAction = (selectedPiece, toPosition) => (
   (dispatch, getState) => {
     dispatch({
