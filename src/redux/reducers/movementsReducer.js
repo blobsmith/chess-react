@@ -5,7 +5,7 @@ const movementsReducer = (state = [], action) => {
     switch(action.type) {
         case 'SELECT_PIECE':
             if (action.selectedPiece !== '') {
-                movements = movementsService.getAvailableMovement(action.selectedPiece, action.piecesPosition);
+                movements = movementsService.getAvailableMovement(action.selectedPiece, action.piecesPosition, action.castling);
             }
             break;
 

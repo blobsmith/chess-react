@@ -6,9 +6,9 @@ import castlingReducer from './castlingReducer';
 
 const chessReducers = combineReducers({
   selectedPiece: pieceReducer,
-  availableMovements: movementsReducer,
-  piecesPosition: piecesPositionReducer,
   castling: castlingReducer,
+  availableMovements: movementsReducer,
+  piecesPosition: piecesPositionReducer
 });
 
 export default chessReducers;

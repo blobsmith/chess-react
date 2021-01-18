@@ -3,29 +3,30 @@ import movementsService from './MovementsService';
 
 class CastlingService {
 
-    constructor() {
-        
-        /* Castling status */
-        this.CASTLING_SHORT = 'castling short';
-        this.CASTLING_LONG = 'castling long';
-        this.CASTLING_IS_POSSIBLE = 'castling is possible';
-        this.CASTLING_IS_FORBIDDEN = 'castling is forbidden';
-        this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE = 'castling is temporary not possible';
+    /* Castling type */
+    static CASTLING_SHORT = 'castling short';
+    static CASTLING_LONG = 'castling long';
 
+    /* Castling status */
+    static CASTLING_IS_POSSIBLE = 'castling is possible';
+    static CASTLING_IS_FORBIDDEN = 'castling is forbidden';
+    static CASTLING_IS_CURRENTLY_NOT_POSSIBLE = 'castling is temporary not possible';
+
+    constructor() {
         this.castingLines = {
             [piecesService.BLACK_PIECE] : {
-                [this.CASTLING_SHORT] : [
+                [CastlingService.CASTLING_SHORT] : [
                     'A8','B8','C8','D8' 
                 ],
-                [this.CASTLING_LONG] : [
+                [CastlingService.CASTLING_LONG] : [
                     'D8','E8','F8','G8','H8' 
                 ],
             },
             [piecesService.WHITE_PIECE] : {
-                [this.CASTLING_SHORT] : [
+                [CastlingService.CASTLING_SHORT] : [
                     'A1','B1','C1','D1' 
                 ],
-                [this.CASTLING_LONG] : [
+                [CastlingService.CASTLING_LONG] : [
                     'D1','E1','F1','G1','H1' 
                 ],
             },
@@ -33,12 +34,12 @@ class CastlingService {
 
         this.initCastling = {
             [piecesService.WHITE_PIECE] : {
-                [this.CASTLING_SHORT] : this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE,
-                [this.CASTLING_LONG] : this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE
+                [CastlingService.CASTLING_SHORT] : CastlingService.CASTLING_IS_CURRENTLY_NOT_POSSIBLE,
+                [CastlingService.CASTLING_LONG] : CastlingService.CASTLING_IS_CURRENTLY_NOT_POSSIBLE
             },
             [piecesService.BLACK_PIECE] : {
-                [this.CASTLING_SHORT] : this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE,
-                [this.CASTLING_LONG] : this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE
+                [CastlingService.CASTLING_SHORT] : CastlingService.CASTLING_IS_CURRENTLY_NOT_POSSIBLE,
+                [CastlingService.CASTLING_LONG] : CastlingService.CASTLING_IS_CURRENTLY_NOT_POSSIBLE
             },
         };
     }
@@ -95,12 +96,12 @@ class CastlingService {
     shortCastlingLineIntersection = () => {
         const opponentColor = (this.color === piecesService.WHITE_PIECE) ? piecesService.BLACK_PIECE :piecesService.WHITE_PIECE;
         this.opponentPiecesMovements = movementsService.getPiecesMovements(opponentColor, this.piecesMap);
-        const intersection = this.castingLines[this.color][this.CASTLING_SHORT].filter(x => this.opponentPiecesMovements.includes(x));
+        const intersection = this.castingLines[this.color][CastlingService.CASTLING_SHORT].filter(x => this.opponentPiecesMovements.includes(x));
         if (intersection.length > 0) {
-            this.castlingState[this.color][this.CASTLING_SHORT] = this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE;
+            this.castlingState[this.color][CastlingService.CASTLING_SHORT] = CastlingService.CASTLING_IS_CURRENTLY_NOT_POSSIBLE;
         }
         else {
-            this.castlingState[this.color][this.CASTLING_SHORT] = this.CASTLING_IS_POSSIBLE;
+            this.castlingState[this.color][CastlingService.CASTLING_SHORT] = CastlingService.CASTLING_IS_POSSIBLE;
         }
     }
 
@@ -112,12 +113,12 @@ class CastlingService {
         if (this.opponentPiecesMovements === undefined) {
             this.opponentPiecesMovements = movementsService.getPiecesMovements(opponentColor, this.piecesMap);
         }
-        const intersection = this.castingLines[this.color][this.CASTLING_LONG].filter(x => this.opponentPiecesMovements.includes(x)); 
+        const intersection = this.castingLines[this.color][CastlingService.CASTLING_LONG].filter(x => this.opponentPiecesMovements.includes(x)); 
         if (intersection.length > 0) {
-            this.castlingState[this.color][this.CASTLING_LONG] = this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE;
+            this.castlingState[this.color][CastlingService.CASTLING_LONG] = CastlingService.CASTLING_IS_CURRENTLY_NOT_POSSIBLE;
         }
         else {
-            this.castlingState[this.color][this.CASTLING_LONG] = this.CASTLING_IS_POSSIBLE;
+            this.castlingState[this.color][CastlingService.CASTLING_LONG] = CastlingService.CASTLING_IS_POSSIBLE;
         }
     }
 
@@ -138,10 +139,10 @@ class CastlingService {
         }
 
         if (isEmpty) {
-            this.castlingState[this.color][this.CASTLING_SHORT] = this.CASTLING_IS_POSSIBLE;
+            this.castlingState[this.color][CastlingService.CASTLING_SHORT] = CastlingService.CASTLING_IS_POSSIBLE;
         }
         else {
-            this.castlingState[this.color][this.CASTLING_SHORT] = this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE;
+            this.castlingState[this.color][CastlingService.CASTLING_SHORT] = CastlingService.CASTLING_IS_CURRENTLY_NOT_POSSIBLE;
         }
         return isEmpty;
     }
@@ -163,10 +164,10 @@ class CastlingService {
         }
 
         if (isEmpty) {
-            this.castlingState[this.color][this.CASTLING_LONG] = this.CASTLING_IS_POSSIBLE;
+            this.castlingState[this.color][CastlingService.CASTLING_LONG] = CastlingService.CASTLING_IS_POSSIBLE;
         }
         else {
-            this.castlingState[this.color][this.CASTLING_LONG] = this.CASTLING_IS_CURRENTLY_NOT_POSSIBLE;
+            this.castlingState[this.color][CastlingService.CASTLING_LONG] = CastlingService.CASTLING_IS_CURRENTLY_NOT_POSSIBLE;
         }
         return isEmpty;
     }
@@ -192,7 +193,7 @@ class CastlingService {
 
         }
         if (rookMoved) {
-            this.castlingState[this.color][this.CASTLING_LONG] = this.CASTLING_IS_FORBIDDEN;
+            this.castlingState[this.color][CastlingService.CASTLING_LONG] = CastlingService.CASTLING_IS_FORBIDDEN;
         }
         return rookMoved;
     }
@@ -218,7 +219,7 @@ class CastlingService {
 
         }
         if (rookMoved) {
-            this.castlingState[this.color][this.CASTLING_SHORT] = this.CASTLING_IS_FORBIDDEN;
+            this.castlingState[this.color][CastlingService.CASTLING_SHORT] = CastlingService.CASTLING_IS_FORBIDDEN;
         }
         return rookMoved;
     }
@@ -243,15 +244,15 @@ class CastlingService {
             }
         }
         if (kingMoved) {
-            this.castlingState[this.color][this.CASTLING_SHORT] = this.CASTLING_IS_FORBIDDEN;
-            this.castlingState[this.color][this.CASTLING_LONG] = this.CASTLING_IS_FORBIDDEN;
+            this.castlingState[this.color][CastlingService.CASTLING_SHORT] = CastlingService.CASTLING_IS_FORBIDDEN;
+            this.castlingState[this.color][CastlingService.CASTLING_LONG] = CastlingService.CASTLING_IS_FORBIDDEN;
         }
         return kingMoved;
     }
 
     castlingShortIsForbidden = () => {
         let isForbidden = false;
-        if (this.castlingState[this.color][this.CASTLING_SHORT] === this.CASTLING_IS_FORBIDDEN) {
+        if (this.castlingState[this.color][CastlingService.CASTLING_SHORT] === CastlingService.CASTLING_IS_FORBIDDEN) {
             isForbidden = true;
         }
         return isForbidden;
@@ -259,12 +260,12 @@ class CastlingService {
 
     castlingLongIsForbidden = () => {
         let isForbidden = false;
-        if (this.castlingState[this.color][this.CASTLING_LONG] === this.CASTLING_IS_FORBIDDEN) {
+        if (this.castlingState[this.color][CastlingService.CASTLING_LONG] === CastlingService.CASTLING_IS_FORBIDDEN) {
             isForbidden = true;
         }
         return isForbidden;
     }
 }
 
-const castlingService = new CastlingService();
-export default castlingService;
+export const castlingService = new CastlingService();
+export const Castling = CastlingService;

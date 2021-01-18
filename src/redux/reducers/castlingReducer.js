@@ -1,4 +1,4 @@
-import castlingService from '../../services/CastlingService';
+import {castlingService} from '../../services/CastlingService';
 
 const castlingReducer = (state = castlingService.initCastling, action) => {
     switch(action.type) {

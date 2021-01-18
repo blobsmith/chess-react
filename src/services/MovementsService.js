@@ -1,5 +1,5 @@
-import { $CombinedState } from 'redux';
 import piecesService from './PiecesService';
+import { Castling } from './CastlingService';
 
 class MovementsService {
     constructor() {
@@ -133,11 +133,13 @@ class MovementsService {
      *      The complete piece name (name-position).
      * @param {string} piecesPosition 
      *      Positions of pieces on the board.
+     * @param {string} castling 
+     *      The castling states.
      * 
      * @return {Array}
      *      The list of available movements.
      */
-    getAvailableMovement = (selectedPiece, piecesPosition) => {
+    getAvailableMovement = (selectedPiece, piecesPosition, castlingState = undefined) => {
         this.pieceType = piecesService.getPieceType(selectedPiece);
         this.pieceColor = piecesService.getPieceColor(selectedPiece);
         this.positionColumn = piecesService.getPositionColumn(selectedPiece);
@@ -168,7 +170,7 @@ class MovementsService {
                 break;
             
             case piecesService.KING:
-                this.getKingAvailablePositions();
+                this.getKingAvailablePositions(castlingState);
                 break;
             
             default:
@@ -385,7 +387,7 @@ class MovementsService {
     /**
      * Get all the possible move for the selected King.
      */
-    getKingAvailablePositions = () => {
+    getKingAvailablePositions = (castlingState = undefined) => {
         let newPosition;
         for (let columnIndex = -1; columnIndex < 2; columnIndex++) {
             for (let rowIndex = -1; rowIndex < 2; rowIndex++) {
@@ -396,6 +398,24 @@ class MovementsService {
                 if (newColumn > 0 && newColumn < 9 && newRow > 0 && newRow < 9) {
                     newPosition = this.convertToLetter(newColumn) + newRow;
                     this.pushNewPosition(newPosition);
+                }
+            }
+        }
+        if (castlingState !== undefined) {
+            if(this.pieceColor === piecesService.WHITE_PIECE) {
+                if (castlingState[piecesService.WHITE_PIECE][Castling.CASTLING_SHORT] === Castling.CASTLING_IS_POSSIBLE) {
+                    this.pushNewPosition('B1');
+                }
+                if (castlingState[piecesService.WHITE_PIECE][Castling.CASTLING_LONG] === Castling.CASTLING_IS_POSSIBLE) {
+                    this.pushNewPosition('F1');
+                }
+            }
+            else {
+                if (castlingState[piecesService.BLACK_PIECE][Castling.CASTLING_SHORT] === Castling.CASTLING_IS_POSSIBLE) {
+                    this.pushNewPosition('B8');
+                }
+                if (castlingState[piecesService.BLACK_PIECE][Castling.CASTLING_LONG] === Castling.CASTLING_IS_POSSIBLE) {
+                    this.pushNewPosition('F8');
                 }
             }
         }
@@ -416,10 +436,45 @@ class MovementsService {
     move = (selectedPiece, targetPosition, availableMovements, piecesMap) => {
         const currentPosition = piecesService.getCurrentPosition(selectedPiece);
         const currentPiece = piecesService.getPiece(selectedPiece);
+        const currentPieceType = piecesService.getPieceType(selectedPiece);
         if (availableMovements.indexOf(targetPosition) !== -1) {
             let newPiecesMap = Object.assign({}, piecesMap);
             delete newPiecesMap[currentPosition];
             newPiecesMap[targetPosition] = currentPiece;
+
+            // Apply the Castling move. 
+            if (currentPieceType === piecesService.KING) {
+                const currentColumn = piecesService.getPositionColumn(currentPosition);
+                const targetColumn = piecesService.getPositionColumn(targetPosition);
+                // If the king want to move to 2 columns.
+                if (Math.abs(parseInt(this.convertToNumber(targetColumn)) - parseInt(this.convertToNumber(currentColumn))) === 2) {
+                    console.log(targetColumn);
+                    switch(targetPosition) {
+                        case 'B1':
+                            delete newPiecesMap['A1'];
+                            newPiecesMap['C1'] = 'Rw';
+                        break;
+
+                        case 'B8':
+                            delete newPiecesMap['A8'];
+                            newPiecesMap['C8'] = 'Rb';
+                        break;
+
+                        case 'F1':
+                            delete newPiecesMap['H1'];
+                            newPiecesMap['E1'] = 'Rw';
+                            break;
+
+                        case 'F8':
+                            delete newPiecesMap['H8'];
+                            newPiecesMap['E8'] = 'Rb';
+                        break;
+                        default:
+
+                    }
+                }
+            }
+
             // this.debugMap(newPiecesMap, 'New Piece moved');
             return newPiecesMap;
         }

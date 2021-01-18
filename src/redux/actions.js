@@ -3,7 +3,8 @@ export const selectPieceAction = (selectedPiece) => (
     dispatch({
       type: 'SELECT_PIECE',
       selectedPiece: selectedPiece,
-      piecesPosition: getState().piecesPosition
+      piecesPosition: getState().piecesPosition,
+      castling: getState().castling
     });
   }
  );

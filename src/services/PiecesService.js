@@ -62,7 +62,14 @@ class PiecesService {
      *      the string definition of a piece.
      */
     getPositionColumn = (selectedPiece) => {
-        return selectedPiece.substring(3,4);
+        let column = '';
+        if (selectedPiece.length === 2) {
+            column = selectedPiece.substring(0,1);
+        }
+        if (selectedPiece.length === 5) {
+            column = selectedPiece.substring(3,4);
+        }
+        return column;
     }
 
     /**
