@@ -448,7 +448,6 @@ class MovementsService {
                 const targetColumn = piecesService.getPositionColumn(targetPosition);
                 // If the king want to move to 2 columns.
                 if (Math.abs(parseInt(this.convertToNumber(targetColumn)) - parseInt(this.convertToNumber(currentColumn))) === 2) {
-                    console.log(targetColumn);
                     switch(targetPosition) {
                         case 'B1':
                             delete newPiecesMap['A1'];

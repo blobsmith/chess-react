@@ -7,15 +7,22 @@ import piecesService from '../services/PiecesService';
 class Piece extends React.Component {
 
     handleClick() {
-        if (piecesService.getCurrentPosition(this.props.selectedPiece) === this.props.position) {
-            this.props.unselect();
-        }
-        else {
-            if (this.props.selectedPiece === '') {
-                this.props.select(piecesService.getPieceName(this.props.name, this.props.position));
+        // White player play only white pieces.
+        if (this.props.nextPlayer === this.props.color) {
+
+            // If piece is selected, unselect it on next click.
+            if (piecesService.getCurrentPosition(this.props.selectedPiece) === this.props.position) {
+                this.props.unselect();
             }
             else {
-                this.props.move(this.props.selectedPiece, this.props.position);
+                // If no piece has been selected, select it.
+                if (this.props.selectedPiece === '') {
+                    this.props.select(piecesService.getPieceName(this.props.name, this.props.position));
+                }
+                else {
+                    // If a piece is selected and click on other piece, check if we have to move it.
+                    this.props.move(this.props.selectedPiece, this.props.position);
+                }
             }
         }
     }
@@ -45,7 +52,8 @@ class Piece extends React.Component {
 
 const mapStatesToProps = (state) => {
     return {
-        selectedPiece: state.selectedPiece
+        selectedPiece: state.selectedPiece,
+        nextPlayer: state.nextPlayer
     }
 };
 
