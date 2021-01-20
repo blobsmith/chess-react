@@ -4,8 +4,10 @@ import piecesPositionReducer from './piecesPositionReducer';
 import movementsReducer from './movementsReducer';
 import castlingReducer from './castlingReducer';
 import playerReducer from './playerReducer';
+import pawnPromotionReducer from './pawnPromotionReducer';
 
 const chessReducers = combineReducers({
+  pawnPromotion: pawnPromotionReducer,
   selectedPiece: pieceReducer,
   castling: castlingReducer,
   availableMovements: movementsReducer,

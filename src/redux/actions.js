@@ -24,15 +24,18 @@ export const movePieceAction = (selectedPiece, toPosition) => (
   }
 );
 
-export const castlingAction = (selectedPiece, toPosition) => ({
-  type: 'CASTLING',
-  selectedPiece: selectedPiece,
-  toPosition: toPosition
+export const activePawnPromotionAction = () => ({
+  type: 'ACTIVE_PAWN_PROMOTION'
 });
 
-export const pawnPromotionAction = (selectedPiece) => ({
-  type: 'PAWN_PROMOTION',
-  selectedPiece: selectedPiece
+export const disablePawnPromotionAction = () => ({
+  type: 'DISABLE_PAWN_PROMOTION'
+});
+
+export const pawnPromotionReplaceAction = (pieceName, pieceType) => ({
+  type: 'PAWN_PROMOTION_REPLACE', 
+  pieceName: pieceName,
+  pieceType: pieceType
 });
 
 

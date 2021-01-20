@@ -1,12 +1,13 @@
 import React from 'react';
 import PieceComponent from '../components/Piece';
-import { selectPieceAction, unselectPieceAction, movePieceAction } from '../redux/actions';
+import { selectPieceAction, unselectPieceAction, movePieceAction, activePawnPromotionAction } from '../redux/actions';
 import { connect } from 'react-redux';
 import piecesService from '../services/PiecesService';
+import promotionService from '../services/PromotionService';
 
 class Piece extends React.Component {
 
-    handleClick() {
+    handleClick(selectedPiece, position) {
         // White player play only white pieces.
         if (this.props.nextPlayer === this.props.color) {
 
@@ -20,8 +21,13 @@ class Piece extends React.Component {
                     this.props.select(piecesService.getPieceName(this.props.name, this.props.position));
                 }
                 else {
-                    // If a piece is selected and click on other piece, check if we have to each the opponent.
+                    // If a piece is selected and click on other piece, check if we have to eat the opponent.
                     if (piecesService.getPieceColor(this.props.selectedPiece) !== this.props.color) {
+
+                        // In case of Pawn, manage the promotion.
+                        if (promotionService.promotionIsNeeded(selectedPiece, position)) {
+                            this.props.launchPawnPromotion();
+                        }
                         this.props.move(this.props.selectedPiece, this.props.position);
                     }
                 }
@@ -41,7 +47,7 @@ class Piece extends React.Component {
                 image={piece}
                 className={'row'+ row + ' column' + column}
                 onClick={() => {
-                    this.handleClick();
+                    this.handleClick(this.props.selectedPiece, this.props.position);
                 }}
             />
         );
@@ -70,6 +76,9 @@ const mapDispatchToProps = (dispatch) => {
         move: (selectedPiece, toPosition) => {
             dispatch(movePieceAction(selectedPiece, toPosition));
         },
+        launchPawnPromotion: () => {
+            dispatch(activePawnPromotionAction());
+        }
     }
 };
 

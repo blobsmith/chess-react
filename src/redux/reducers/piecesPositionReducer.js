@@ -1,4 +1,5 @@
 import movementsService from '../../services/MovementsService';
+import promotionService from '../../services/PromotionService';
 
 const piecesPositionReducer = (state, action) => {
     if (!state) {
@@ -11,10 +12,8 @@ const piecesPositionReducer = (state, action) => {
             }
             break;
 
-        case 'CASTLING':
-            break;
-
-        case 'PAWN_PROMOTION':
+        case 'PAWN_PROMOTION_REPLACE':
+            return promotionService.promotion(action.pieceName, action.pieceType, state);
             break;
 
         default:

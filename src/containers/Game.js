@@ -5,6 +5,7 @@ import Board from './Board';
 import Pieces from './Pieces';
 import piecesService from '../services/PiecesService';
 import '../styles/game.css';
+import PawnPromotion from './PawnPromotion';
 
 class Game extends React.Component {
 
@@ -15,6 +16,7 @@ class Game extends React.Component {
                 <div className={'game-board ' + (reverse ? 'reverse' : 'regular') }>
                     <Board reverse={reverse} />
                     <Pieces pieces={this.props.piecesPosition} />
+                    <PawnPromotion />
                 </div>
                 <div className="game-info">
                     <div>{(this.props.nextPlayer === piecesService.WHITE_PIECE ? 'Whites' : 'Blacks')  + ' to play.'}</div>

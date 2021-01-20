@@ -1,13 +1,18 @@
 import React from 'react';
 import Square from '../components/Square';
 import '../styles/board.css';
-import { movePieceAction } from '../redux/actions';
+import { movePieceAction, activePawnPromotionAction } from '../redux/actions';
 import { connect } from 'react-redux';
+import promotionService from '../services/PromotionService';
 
 class Board extends React.Component {
 
     handleMove(position) {
         if (this.props.selectedPiece !== '' && this.props.availableMovements.indexOf(position) !== -1) {
+            // In case of Pawn, manage the promotion.
+            if (promotionService.promotionIsNeeded(this.props.selectedPiece, position)) {
+                this.props.launchPawnPromotion();
+            }
             this.props.move(this.props.selectedPiece, position);
         }
     }
@@ -27,8 +32,8 @@ class Board extends React.Component {
         const squares = numbers.map((number, index) => (
             <div key={'row'+number} className={"board-row row-" + number} >
                 <Square 
-                    key={letters[0], number} 
-                    cell={letters[0], number} 
+                    key={letters[0] + number} 
+                    cell={letters[0] + number} 
                     background={number%2 === 0 ? 'dark' : 'light' } 
                     onClick={() => (this.handleMove(letters[0] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[0] + number) !== -1) ? true : false}
@@ -104,6 +109,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         move: (selectedPiece, toPosition) => {
             dispatch(movePieceAction(selectedPiece, toPosition));
+        },
+        launchPawnPromotion: () => {
+            dispatch(activePawnPromotionAction());
         },
     };
 };
