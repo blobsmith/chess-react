@@ -123,8 +123,7 @@ class MovementsService {
             }
         }
         return movements;
-    }
-    
+    }    
 
     /**
      * Get all available movements for a piece.

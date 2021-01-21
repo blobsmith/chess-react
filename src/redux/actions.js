@@ -4,12 +4,13 @@ export const selectPieceAction = (selectedPiece) => (
       type: 'SELECT_PIECE',
       selectedPiece: selectedPiece,
       piecesPosition: getState().piecesPosition,
-      castling: getState().castling
+      castling: getState().castling,
+      enPassant: getState().enPassant
     });
   }
  );
 
- export const unselectPieceAction = (selectedPiece) => ({
+ export const unselectPieceAction = () => ({
   type: 'UNSELECT_PIECE'
 });
 
@@ -19,7 +20,8 @@ export const movePieceAction = (selectedPiece, toPosition) => (
       type: 'MOVE_PIECE',
       selectedPiece: selectedPiece,
       toPosition: toPosition,
-      availableMovements: getState().availableMovements
+      availableMovements: getState().availableMovements,
+      piecesPosition: getState().piecesPosition
     });
   }
 );

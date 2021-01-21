@@ -34,7 +34,7 @@ class PromotionService {
         let pieceName = '';
         for (const position in piecesMap) {
             const piece = piecesMap[position];
-            if (piecesService.getPieceType(piece) === piecesService.PAWN) {
+            if (piecesService.isPawn(piece)) {
                 if (position.substr(1, 2) === '1' || position.substr(1, 2) === '8') {
                     pieceName = piecesService.getPieceName(piece, position);
                 }
@@ -45,7 +45,7 @@ class PromotionService {
 
     promotionIsNeeded = (selectedPiece, position) => {
         let isNeeded = false;
-        if (piecesService.getPieceType(selectedPiece) === piecesService.PAWN) {
+        if (piecesService.isPawn(selectedPiece)) {
             if (piecesService.getPieceColor(selectedPiece) === piecesService.WHITE_PIECE) {
                 if (position.substring(1,2) === '8') {
                     isNeeded = true;

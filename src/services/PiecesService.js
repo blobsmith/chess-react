@@ -79,7 +79,14 @@ class PiecesService {
      *      the string definition of a piece.
      */
     getPositionRow = (selectedPiece) => {
-        return selectedPiece.substring(4,5);
+        let row = '';
+        if (selectedPiece.length === 2) {
+            row = selectedPiece.substring(1,2);
+        }
+        if (selectedPiece.length === 5) {
+            row = selectedPiece.substring(4,5);
+        }
+        return row;
     }
 
     /**
@@ -92,6 +99,14 @@ class PiecesService {
      */
     getPieceName = (name, position) => {
         return name + '-' + position;
+    }
+
+    isPawn = (pieceName) => {
+        let isPawn = false;
+        if (this.getPieceType(pieceName) === this.PAWN) {
+            isPawn = true;
+        }
+        return isPawn;
     }
 }
 

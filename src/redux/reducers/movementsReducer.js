@@ -1,11 +1,16 @@
 import movementsService from '../../services/MovementsService';
+import enPassantService from '../../services/EnPassantService';
 
 const movementsReducer = (state = [], action) => {
     let movements = [];
     switch(action.type) {
         case 'SELECT_PIECE':
             if (action.selectedPiece !== '') {
+                 // Get the available movements for the selected piece.
                 movements = movementsService.getAvailableMovement(action.selectedPiece, action.piecesPosition, action.castling);
+                
+                // Get the "en passant" movements for the selected piece if exists.
+                movements = enPassantService.addEnPassantToMovements(action.selectedPiece, action.enPassant, movements);
             }
             break;
 

@@ -14,6 +14,7 @@ class Board extends React.Component {
                 this.props.launchPawnPromotion();
             }
             this.props.move(this.props.selectedPiece, position);
+            
         }
     }
 
@@ -102,6 +103,7 @@ const mapStatesToProps = (state) => {
     return {
         selectedPiece: state.selectedPiece,
         availableMovements: state.availableMovements,
+
     };
 };
 
