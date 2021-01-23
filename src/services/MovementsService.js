@@ -64,9 +64,28 @@ class MovementsService {
         this.FILLED_BY_OTHER = 'filled-by-other';
         this.FILLED_BY_OWN = 'filled-by-own';
     }
-
-    isCheckMat = () => {
-
+    /**
+     * Verify if the opponent is in check mat position.
+     * 
+     * @param {String} opponentColor 
+     *      Color of the next player.
+     * @param {Object} piecesMap 
+     *      The map of all pieces on board.
+     */
+    isCheckMat = (opponentColor, piecesMap) => {
+        let isCheckMat = true;
+        for(const position in piecesMap) {
+            const selectedPiece = piecesService.getPieceName(piecesMap[position], position);
+            if (piecesService.getPieceColor(selectedPiece) === opponentColor) {
+                let movements = this.getAvailableMovement(selectedPiece, piecesMap);
+                movements = this.removeIllegalMovements(selectedPiece, piecesMap, movements);
+                if (movements.length > 0) {
+                    isCheckMat = false;
+                    break;
+                }
+            }
+        }
+        return isCheckMat;
     }
 
     /**
@@ -624,29 +643,22 @@ class MovementsService {
         headText = headText + '|';
         console.log(headText);
         console.log('---------------------------------------');
-
-
+        console.log(' ');
         for(let iLine = 8 ; iLine > 0; iLine--) {
-            console.log(' ');
-            console.log('---- ---- ---- ---- ---- ---- ---- ----');
+            
             let line = '';
             for(let iColumn = 1 ; iColumn < 9; iColumn++) {
                 const square = this.convertToLetter(iColumn) + iLine;
-                line = line + '|';
                 if (map[square] === undefined) {
                     line = line + '  ';
                 }
                 else {
                     line = line + map[square];
                 }
-                line = line + '|';
-                if (iColumn !== 8) {
-                    line = line + ' ';
-                }
+                line = line + ' ';
             }
             console.log(line);
         }
-        console.log('---- ---- ---- ---- ---- ---- ---- ----');
     }
 
     /**

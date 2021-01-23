@@ -16,6 +16,7 @@ class Game extends React.Component {
         if(this.props.checkOrCheckMat['status'] !== undefined) {
             playerColor = this.props.checkOrCheckMat['color'];
             status = this.props.checkOrCheckMat['status'];
+            console.log(this.props.checkOrCheckMat['status']);
         }
         return (
             <div className="game">

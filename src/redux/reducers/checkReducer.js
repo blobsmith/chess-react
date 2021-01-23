@@ -1,8 +1,7 @@
-import piecesService from '../../services/PiecesService';
 import movementsService from '../../services/MovementsService';
 
 const CHECK = 'check';
-const CHECK_MAT = 'check-mat';
+const CHECK_MAT = 'check mat';
 
 const checkReducer = (state = {}, action) => {
     let newState = {};
@@ -13,6 +12,12 @@ const checkReducer = (state = {}, action) => {
                     'status' : CHECK,
                     'color' : action.nextPlayer
                 };
+                if (movementsService.isCheckMat(action.nextPlayer, action.piecesPosition)) {
+                    newState = {
+                        'status' : CHECK_MAT,
+                        'color' : action.nextPlayer
+                    };
+                }
             }
             return newState;
             break;
