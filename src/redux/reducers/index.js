@@ -6,6 +6,7 @@ import castlingReducer from './castlingReducer';
 import playerReducer from './playerReducer';
 import pawnPromotionReducer from './pawnPromotionReducer';
 import enPassantReducer from './enPassantReducer';
+import checkReducer from './checkReducer';
 
 const chessReducers = combineReducers({
   pawnPromotion: pawnPromotionReducer,
@@ -14,7 +15,8 @@ const chessReducers = combineReducers({
   enPassant: enPassantReducer,
   availableMovements: movementsReducer,
   piecesPosition: piecesPositionReducer,
-  nextPlayer: playerReducer
+  checkOrCheckMat: checkReducer,
+  nextPlayer: playerReducer,
 });
 
 export default chessReducers;

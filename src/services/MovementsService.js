@@ -70,6 +70,94 @@ class MovementsService {
     }
 
     /**
+     * Verify if the opponent is in check position.
+     *
+     * @param {String} opponentColor 
+     *      Color of the next player.
+     * @param {Object} pieceMap 
+     *      The map of all pieces on board.
+     */
+    isCheck = (opponentColor, piecesMap) => {
+        let isCheck = false;
+        let kingPosition = '';
+        let color = piecesService.WHITE_PIECE;
+        if (opponentColor === piecesService.WHITE_PIECE) {
+            color = piecesService.BLACK_PIECE;
+        }
+        // King of the opponent
+        const king = piecesService.KING + opponentColor;
+
+        // Get the position of the king of the opponent player.
+        for (const position in piecesMap) {
+            const pieceName = piecesMap[position];
+            if (pieceName === king) {
+                kingPosition = position;
+                break;
+            }
+        }
+
+        // Get all movements of the opponent after the move.
+        const movements = this.getPiecesMovements(color, piecesMap);
+            
+        // If the King of the opponent is in the available movements.
+        if (movements.indexOf(kingPosition) !== -1) {
+            isCheck = true;
+        }
+        return isCheck;
+    }
+    /**
+     * For each possible movement, verify if you apply the movement your King is in check position.
+     * If it's the case the movement is illegual.
+     * 
+     * @param {String} selectedPiece 
+     *      The selected piece user wants to move.
+     * @param {Object} piecesMap
+     *      The map of all pieces on board.
+     * @param {Array} movements
+     *      The list of all possible movements for the selected piece.
+     */
+    removeIllegalMovements = (selectedPiece, piecesMap, movements) => {
+        let legalMovements = [];
+        const playerColor = piecesService.getPieceColor(selectedPiece);
+        const opponentColor = (playerColor === piecesService.WHITE_PIECE) ? piecesService.BLACK_PIECE : piecesService.WHITE_PIECE;
+        const king = piecesService.KING + playerColor;
+        let kingPosition = '';
+
+        // Get the position of the king of the current player.
+        for (const position in piecesMap) {
+            const pieceName = piecesMap[position];
+            if (pieceName === king) {
+                kingPosition = position;
+                break;
+            }
+        }
+        
+        for (const key in movements) {
+            // Apply the movement on a fake pieces map.
+            let fakeMap = Object.assign({}, piecesMap);
+            const movementPosition = movements[key];
+            fakeMap = this.move(selectedPiece, movementPosition, movements, fakeMap);
+
+            // Get all movements of the opponent after the move.
+            const opponentMovements = this.getPiecesMovements(opponentColor, fakeMap);
+            
+            // If the King of the player is not in a check position then add to legal movements.
+            if (piecesService.isKing(selectedPiece)) {
+                if (opponentMovements.indexOf(movementPosition) === -1) {
+                    legalMovements.push(movementPosition);
+                }
+            }
+            else {
+                if (opponentMovements.indexOf(kingPosition) === -1) {
+                    legalMovements.push(movementPosition);
+                }
+            }
+
+        }
+        return legalMovements;
+    }
+
+    /**
      * Check if a square is empty and check which piece is on it.
      * 
      * @param {String} newPosition 
@@ -433,11 +521,12 @@ class MovementsService {
      *      Map of all locations of pieces.
      */
     move = (selectedPiece, targetPosition, availableMovements, piecesMap) => {
+        let newPiecesMap = Object.assign({}, piecesMap);
+        newPiecesMap = this.removePawnOnEnPassantMovement(selectedPiece, targetPosition, newPiecesMap);
         const currentPosition = piecesService.getCurrentPosition(selectedPiece);
         const currentPiece = piecesService.getPiece(selectedPiece);
         const currentPieceType = piecesService.getPieceType(selectedPiece);
         if (availableMovements.indexOf(targetPosition) !== -1) {
-            let newPiecesMap = Object.assign({}, piecesMap);
             delete newPiecesMap[currentPosition];
             newPiecesMap[targetPosition] = currentPiece;
 
@@ -479,6 +568,40 @@ class MovementsService {
         // this.debugMap(piecesMap, 'Old map');
         return piecesMap;
     }
+
+    removePawnOnEnPassantMovement = (selectedPiece, position, piecesMap) => {
+        // If it's a Pawn.
+        if (piecesService.isPawn(selectedPiece)) {
+            // If it changes his column.
+            if (piecesService.getPositionColumn(selectedPiece) !== piecesService.getPositionColumn(position)) {
+                // If there is no piece on it's target square position.
+                if (piecesMap[position] === undefined) {
+                    let row = parseInt(piecesService.getPositionRow(position));
+                    const column = piecesService.getPositionColumn(position);
+                    let pawnToDeletePosition = '';
+
+                    // if there is a pawn of a different color behind it.
+                    if (piecesService.getPieceColor(selectedPiece) === piecesService.WHITE_PIECE) {
+                        row = row - 1;
+                        pawnToDeletePosition = column + row;
+                    }
+                    else {
+                        row = row + 1;
+                        pawnToDeletePosition = column + row;
+                    }
+                    const pawnToDelete = piecesMap[pawnToDeletePosition];
+                    if (pawnToDelete !== undefined 
+                        && piecesService.isPawn(pawnToDelete)
+                        && piecesService.getPieceColor(pawnToDelete) !== piecesService.getPieceColor(selectedPiece)) {
+                        // delete pawn due to "En passant" functionnality.
+                        delete piecesMap[pawnToDeletePosition];
+                    }
+                }
+            }
+        }
+       return piecesMap;
+    }
+
     /**
      * Help function used to see board data in JavaScript console.
      * 

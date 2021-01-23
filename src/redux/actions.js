@@ -23,8 +23,13 @@ export const movePieceAction = (selectedPiece, toPosition) => (
       availableMovements: getState().availableMovements,
       piecesPosition: getState().piecesPosition
     });
-  }
-);
+
+    dispatch({
+      type: 'CHECK_OR_CHECK_MAT',
+      piecesPosition: getState().piecesPosition,
+      nextPlayer: getState().nextPlayer
+    });
+  });
 
 export const activePawnPromotionAction = () => ({
   type: 'ACTIVE_PAWN_PROMOTION'

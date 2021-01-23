@@ -3,39 +3,6 @@ import movementsService from './MovementsService';
 
 class EnPassantService {
 
-    removePawnOnEnPassantMovement = (selectedPiece, position, piecesMap) => {
-        // If it's a Pawn.
-        if (piecesService.isPawn(selectedPiece)) {
-            // If it changes his column.
-            if (piecesService.getPositionColumn(selectedPiece) !== piecesService.getPositionColumn(position)) {
-                // If there is no piece on it's target square position.
-                if (piecesMap[position] === undefined) {
-                    let row = parseInt(piecesService.getPositionRow(position));
-                    const column = piecesService.getPositionColumn(position);
-                    let pawnToDeletePosition = '';
-
-                    // if there is a pawn of a different color behind it.
-                    if (piecesService.getPieceColor(selectedPiece) === piecesService.WHITE_PIECE) {
-                        row = row - 1;
-                        pawnToDeletePosition = column + row;
-                    }
-                    else {
-                        row = row + 1;
-                        pawnToDeletePosition = column + row;
-                    }
-                    const pawnToDelete = piecesMap[pawnToDeletePosition];
-                    if (pawnToDelete !== undefined 
-                        && piecesService.isPawn(pawnToDelete)
-                        && piecesService.getPieceColor(pawnToDelete) !== piecesService.getPieceColor(selectedPiece)) {
-                        // delete pawn due to "En passant" functionnality.
-                        delete piecesMap[pawnToDeletePosition];
-                    }
-                }
-            }
-        }
-       return piecesMap;
-    }
-
     /**
      * Get availables En passant after a move for the next selection of a piece.
      *

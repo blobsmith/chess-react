@@ -1,6 +1,5 @@
 import movementsService from '../../services/MovementsService';
 import promotionService from '../../services/PromotionService';
-import enPassantService from '../../services/EnPassantService';
 
 const piecesPositionReducer = (state, action) => {
     if (!state) {
@@ -9,8 +8,7 @@ const piecesPositionReducer = (state, action) => {
     switch(action.type) {
         case 'MOVE_PIECE':
             if (action.selectedPiece) {
-                let newPiecesMap = enPassantService.removePawnOnEnPassantMovement(action.selectedPiece, action.toPosition, state);
-                newPiecesMap = movementsService.move(action.selectedPiece, action.toPosition, action.availableMovements, newPiecesMap);
+                const newPiecesMap = movementsService.move(action.selectedPiece, action.toPosition, action.availableMovements, state);
                 return newPiecesMap;
             }
             break;

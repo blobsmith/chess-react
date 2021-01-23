@@ -101,6 +101,12 @@ class PiecesService {
         return name + '-' + position;
     }
 
+    /**
+     * True if the piece is a Pawn.
+     * 
+     * @param {String} pieceName 
+     *      Name of the piece.
+     */
     isPawn = (pieceName) => {
         let isPawn = false;
         if (this.getPieceType(pieceName) === this.PAWN) {
@@ -108,6 +114,39 @@ class PiecesService {
         }
         return isPawn;
     }
+
+    /**
+     * True if the piece is a King.
+     * 
+     * @param {String} pieceName 
+     *      Name of the piece.
+     */
+    isKing = (pieceName) => {
+        let isKing = false;
+        if (this.getPieceType(pieceName) === this.KING) {
+            isKing = true;
+        }
+        return isKing;
+    }
+
+    /**
+     * Get the label of a color from the color code.
+     *
+     * @param {String} color
+     *      The color code
+     */
+    getColorLabel = (color) => {
+        let label = '';
+        if (color === piecesService.WHITE_PIECE) {
+            label = 'Whites';
+        }
+        else {
+            label = 'Blacks';
+        }
+        return label;
+    }
+
+
 }
 
 

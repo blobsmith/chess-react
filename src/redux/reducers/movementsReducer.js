@@ -11,6 +11,8 @@ const movementsReducer = (state = [], action) => {
                 
                 // Get the "en passant" movements for the selected piece if exists.
                 movements = enPassantService.addEnPassantToMovements(action.selectedPiece, action.enPassant, movements);
+
+                movements = movementsService.removeIllegalMovements(action.selectedPiece, action.piecesPosition, movements);
             }
             break;
 

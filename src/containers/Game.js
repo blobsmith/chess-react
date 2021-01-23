@@ -11,6 +11,12 @@ class Game extends React.Component {
 
     render() {
         let reverse = false;
+        let playerColor = '';
+        let status = '';
+        if(this.props.checkOrCheckMat['status'] !== undefined) {
+            playerColor = this.props.checkOrCheckMat['color'];
+            status = this.props.checkOrCheckMat['status'];
+        }
         return (
             <div className="game">
                 <div className={'game-board ' + (reverse ? 'reverse' : 'regular') }>
@@ -19,8 +25,8 @@ class Game extends React.Component {
                     <PawnPromotion />
                 </div>
                 <div className="game-info">
-                    <div>{(this.props.nextPlayer === piecesService.WHITE_PIECE ? 'Whites' : 'Blacks')  + ' to play.'}</div>
-                    <ol>{/* TODO */}</ol>
+                    <div>{ piecesService.getColorLabel(this.props.nextPlayer)  + ' to play.'}</div>
+                    <div className={(playerColor === '' ? 'hidden' : '')} >{piecesService.getColorLabel(playerColor) + ' are ' + status + '.'}</div>
                 </div>
             </div>
         );
@@ -30,7 +36,8 @@ class Game extends React.Component {
 const mapStatesToProps = (state) => {
     return {
         piecesPosition: state.piecesPosition,
-        nextPlayer: state.nextPlayer
+        nextPlayer: state.nextPlayer,
+        checkOrCheckMat: state.checkOrCheckMat
     }
 };
 
