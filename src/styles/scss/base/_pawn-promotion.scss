@@ -6,18 +6,18 @@
   position: absolute;
   margin-top: 19px;
   top: 0;
-}    
 
-.pawn-promotion .label {
+  .label {
     top: 195px;
     position: relative;
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
     width: 680px;
-}
+  }
 
-.pawn-promotion .piece:hover {
-  background-color: orange;
-  border: 2px solid black;
-}
+  .piece:hover {
+    background-color: orange;
+    border: 2px solid black;
+  }
+}    

@@ -1,6 +1,4 @@
 import React from 'react';
-
-import '../styles/pawn-promotion.css';
 import {disablePawnPromotionAction, pawnPromotionReplaceAction } from '../redux/actions';
 
 import blackrook from '../images/pieces/black-rook.png';

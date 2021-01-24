@@ -1,0 +1,112 @@
+.pieces {
+  position: absolute;
+  margin-top: 20px;
+  top: 0;
+}
+
+.piece {
+  width: $square_size;
+  height: $square_size;
+  position: absolute;
+
+  img {
+    padding: $piece_padding;
+    width: $piece_size;
+    height: $piece_size;
+  }
+}
+
+.game-board {
+
+  /** Pieces position on regular display mode **/
+  &.regular {
+    .columnB {
+      left: $column2;
+    }
+    .columnC {
+      left: $column3;
+    }
+    .columnD {
+      left: $column4;
+    }
+    .columnE {
+      left: $column5;
+    }
+    .columnF {
+      left: $column6;
+    }
+    .columnG {
+      left: $column7;
+    }
+    .columnH {
+      left: $column8;
+    }
+    .row1 {
+      top: $column8;
+    }
+    .row2 {
+      top: $column7;
+    }
+    .row3 {
+      top: $column6;
+    }
+    .row4 {
+      top: $column5;
+    }
+    .row5 {
+      top: $column4;
+    }
+    .row6 {
+      top: $column3;
+    }
+    .row7 {
+      top: $column2;
+    }
+  }
+
+  /** Pieces position on reverse display mode **/
+  &.reverse {
+    .columnA {
+      left: $column8;
+    }
+    .columnB {
+      left: $column7;
+    }
+    .columnC {
+      left: $column6;
+    }
+    .columnD {
+      left: $column5;
+    }
+    .columnE {
+      left: $column4;
+    }
+    .columnF {
+      left: $column3;
+    }
+    .columnG {
+      left: $column2;
+    }
+    .row8 {
+      top: $column8;
+    }
+    .row7 {
+      top: $column7;
+    }
+    .row6 {
+      top: $column6;
+    }
+    .row5 {
+      top: $column5;
+    }
+    .row4 {
+      top: $column4;
+    }
+    .row3 {
+      top: $column3;
+    }
+    .row2 {
+      top: $column2;
+    }
+  }
+}

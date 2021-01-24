@@ -1,6 +1,5 @@
 import React from 'react';
 import Square from '../components/Square';
-import '../styles/board.css';
 import { movePieceAction, activePawnPromotionAction } from '../redux/actions';
 import { connect } from 'react-redux';
 import promotionService from '../services/PromotionService';
@@ -92,7 +91,7 @@ class Board extends React.Component {
         ));
 
         return (
-            <div key="board-squares" >
+            <div className="board-squares" >
                 { squares }
             </div>
         );

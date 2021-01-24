@@ -5,7 +5,6 @@ import Bishop from './pieces/Bishop';
 import Queen from './pieces/Queen';
 import King from './pieces/King';
 import Pawn from './pieces/Pawn';
-import '../styles/pieces.css';
 import piecesService from '../services/PiecesService';
 
 class Pieces extends React.Component {

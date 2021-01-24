@@ -1,0 +1,28 @@
+@function calc-column($value1, $value2) {
+  @return $value1 + $value2;
+}
+
+//@media screen and (max-width: 1200px) {
+
+//}
+
+//@media screen and (max-width: 500px) {
+
+//}
+
+//$square_size: 86px;
+//$piece_padding: 7px;  
+
+$square_size: 60px;
+$piece_padding: 5px;  
+
+
+$piece_size: $square_size - $piece_padding - $piece_padding;
+$column2: $square_size;
+$column3: calc-column($square_size, $square_size);
+$column4: calc-column($column3, $square_size);
+$column5: calc-column($column4, $square_size);
+$column6: calc-column($column5, $square_size);
+$column7: calc-column($column6, $square_size);
+$column8: calc-column($column7, $square_size);
+

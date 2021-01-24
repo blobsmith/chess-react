@@ -1,0 +1,64 @@
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.square {
+  background: #fff;
+  float: left;
+  font-size: 9px;
+  font-weight: bold;
+  line-height: $square_size;
+  height: $square_size;
+  padding: 0;
+  width: $square_size;
+  position: relative;
+
+  .square-label {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: 9px;
+  }
+
+  &.dark {
+    background-color: darkmagenta;
+    /*
+      rose: darkmagenta
+      bleu: #003962
+      marron: #582900
+      vert: darkgreen
+    */
+
+    .square-label {
+      color: white;
+    }
+  }
+
+  &.light {
+    background-color: #ffffee;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .dot {
+    height: 22%;
+    width: 22%;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 50%;
+    margin: 39%;
+    z-index: 1;
+    position: absolute;
+    background-color: orange;
+  }
+}
+
+.square-selected {
+  background-color: yellowgreen
+}

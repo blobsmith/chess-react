@@ -1,0 +1,162 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px; }
+
+ol, ul {
+  padding-left: 30px; }
+
+.kbd-navigation .square:focus {
+  background: #ddd; }
+
+.game {
+  display: flex;
+  flex-direction: row; }
+
+.game-board {
+  margin: auto; }
+
+.hidden {
+  display: none; }
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.square {
+  background: #fff;
+  float: left;
+  font-size: 9px;
+  font-weight: bold;
+  line-height: 60px;
+  height: 60px;
+  padding: 0;
+  width: 60px;
+  position: relative; }
+  .square .square-label {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: 9px; }
+  .square.dark {
+    background-color: darkmagenta;
+    /*
+      rose: darkmagenta
+      bleu: #003962
+      marron: #582900
+      vert: darkgreen
+    */ }
+    .square.dark .square-label {
+      color: white; }
+  .square.light {
+    background-color: #ffffee; }
+  .square:focus {
+    outline: none; }
+  .square .dot {
+    height: 22%;
+    width: 22%;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 50%;
+    margin: 39%;
+    z-index: 1;
+    position: absolute;
+    background-color: orange; }
+
+.square-selected {
+  background-color: yellowgreen; }
+
+.pieces {
+  position: absolute;
+  margin-top: 20px;
+  top: 0; }
+
+.piece {
+  width: 60px;
+  height: 60px;
+  position: absolute; }
+  .piece img {
+    padding: 5px;
+    width: 50px;
+    height: 50px; }
+
+.game-board {
+  /** Pieces position on regular display mode **/
+  /** Pieces position on reverse display mode **/ }
+  .game-board.regular .columnB {
+    left: 60px; }
+  .game-board.regular .columnC {
+    left: 120px; }
+  .game-board.regular .columnD {
+    left: 180px; }
+  .game-board.regular .columnE {
+    left: 240px; }
+  .game-board.regular .columnF {
+    left: 300px; }
+  .game-board.regular .columnG {
+    left: 360px; }
+  .game-board.regular .columnH {
+    left: 420px; }
+  .game-board.regular .row1 {
+    top: 420px; }
+  .game-board.regular .row2 {
+    top: 360px; }
+  .game-board.regular .row3 {
+    top: 300px; }
+  .game-board.regular .row4 {
+    top: 240px; }
+  .game-board.regular .row5 {
+    top: 180px; }
+  .game-board.regular .row6 {
+    top: 120px; }
+  .game-board.regular .row7 {
+    top: 60px; }
+  .game-board.reverse .columnA {
+    left: 420px; }
+  .game-board.reverse .columnB {
+    left: 360px; }
+  .game-board.reverse .columnC {
+    left: 300px; }
+  .game-board.reverse .columnD {
+    left: 240px; }
+  .game-board.reverse .columnE {
+    left: 180px; }
+  .game-board.reverse .columnF {
+    left: 120px; }
+  .game-board.reverse .columnG {
+    left: 60px; }
+  .game-board.reverse .row8 {
+    top: 420px; }
+  .game-board.reverse .row7 {
+    top: 360px; }
+  .game-board.reverse .row6 {
+    top: 300px; }
+  .game-board.reverse .row5 {
+    top: 240px; }
+  .game-board.reverse .row4 {
+    top: 180px; }
+  .game-board.reverse .row3 {
+    top: 120px; }
+  .game-board.reverse .row2 {
+    top: 60px; }
+
+.pawn-promotion {
+  opacity: 90%;
+  background-color: white;
+  width: 100%;
+  height: 681px;
+  position: absolute;
+  margin-top: 19px;
+  top: 0; }
+  .pawn-promotion .label {
+    top: 195px;
+    position: relative;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 680px; }
+  .pawn-promotion .piece:hover {
+    background-color: orange;
+    border: 2px solid black; }

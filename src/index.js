@@ -5,6 +5,7 @@ import Game from './containers/Game';
 import { Provider } from 'react-redux';
 import reducer from './redux/reducers';
 import thunk from 'redux-thunk';
+import './styles/css/main.css';
 
 // ========================================
 const store = createStore(reducer, applyMiddleware(thunk));

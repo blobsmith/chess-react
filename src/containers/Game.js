@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Board from './Board';
 import Pieces from './Pieces';
 import piecesService from '../services/PiecesService';
-import '../styles/game.css';
 import PawnPromotion from './PawnPromotion';
 
 class Game extends React.Component {
