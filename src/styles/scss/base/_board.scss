@@ -25,13 +25,25 @@
   }
 
   &.dark {
-    background-color: darkmagenta;
-    /*
-      rose: darkmagenta
-      bleu: #003962
-      marron: #582900
-      vert: darkgreen
-    */
+    background-color: black;
+    &.blue {
+      background-color: #003962;
+    }
+    &.brown {
+      background-color: #582900;
+    }
+    &.green {
+      background-color: darkgreen;
+    }
+    &.gray {
+      background-color: darkslategray;
+    }
+    &.orange {
+      background-color: darkorange;
+    }
+    &.violet {
+      background-color: darkmagenta;
+    }
 
     .square-label {
       color: white;

@@ -2,7 +2,7 @@
   @return $value1 + $value2;
 }
 
-// Extra Small board
+// Small board
 $square_size_small: 40px;
 $piece_padding_small: 2px;  
 $piece_size_small: $square_size_small - $piece_padding_small - $piece_padding_small;

@@ -45,4 +45,9 @@ export const pawnPromotionReplaceAction = (pieceName, pieceType) => ({
   pieceType: pieceType
 });
 
+export const newGameAction = (values) => ({
+  type: 'NEW_GAME',
+  values: values
+});
+
 
