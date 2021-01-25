@@ -23,3 +23,48 @@ ol, ul {
 .hidden {
   display: none;
 }
+
+.game-info {
+  position: relative;
+}
+
+@include for-phone-landscape-up {
+  .game-info {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+}
+
+@include for-tablet-portrait-up { 
+  .game-info {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+@include for-tablet-landscape-up { 
+  .game-info {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+}
+
+@include for-desktop-up {
+  .game-info {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+
+@include for-big-desktop-up {
+  .game-info {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+}

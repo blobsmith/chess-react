@@ -18,21 +18,53 @@ ol, ul {
 .hidden {
   display: none; }
 
+.game-info {
+  position: relative; }
+
+@media (min-width: 576px) {
+  .game-info {
+    position: absolute;
+    top: 30px;
+    left: 30px; } }
+
+@media (min-width: 768px) {
+  .game-info {
+    position: relative;
+    top: 0px;
+    left: 0px; } }
+
+@media (min-width: 992px) and (min-height: 768px) {
+  .game-info {
+    position: absolute;
+    top: 30px;
+    left: 30px; } }
+
+@media (min-width: 1200px) and (min-height: 992px) {
+  .game-info {
+    position: relative;
+    top: 0px;
+    left: 0px; } }
+
+@media (min-width: 1400px) and (min-height: 992px) {
+  .game-info {
+    position: absolute;
+    top: 30px;
+    left: 30px; } }
+
 .board-row:after {
   clear: both;
   content: "";
   display: table; }
 
 .square {
-  background: #fff;
   float: left;
   font-size: 9px;
   font-weight: bold;
-  line-height: 60px;
-  height: 60px;
   padding: 0;
-  width: 60px;
-  position: relative; }
+  position: relative;
+  line-height: 40px;
+  height: 40px;
+  width: 40px; }
   .square .square-label {
     position: absolute;
     right: 2px;
@@ -68,79 +100,231 @@ ol, ul {
 .square-selected {
   background-color: yellowgreen; }
 
+@media (min-width: 768px) {
+  .board-row .square {
+    line-height: 66px;
+    height: 66px;
+    width: 66px; } }
+
+@media (min-width: 1200px) and (min-height: 992px) {
+  .board-row .square {
+    line-height: 100px;
+    height: 100px;
+    width: 100px; } }
+
 .pieces {
   position: absolute;
   margin-top: 20px;
   top: 0; }
 
 .piece {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   position: absolute; }
   .piece img {
-    padding: 5px;
-    width: 50px;
-    height: 50px; }
+    padding: 2px;
+    width: 36px;
+    height: 36px; }
+
+@media (min-width: 768px) {
+  .piece {
+    width: 66px;
+    height: 66px; }
+    .piece img {
+      padding: 5px;
+      width: 56px;
+      height: 56px; } }
+
+@media (min-width: 1200px) and (min-height: 992px) {
+  .piece {
+    width: 100px;
+    height: 100px; }
+    .piece img {
+      padding: 7px;
+      width: 86px;
+      height: 86px; } }
 
 .game-board {
   /** Pieces position on regular display mode **/
   /** Pieces position on reverse display mode **/ }
   .game-board.regular .columnB {
-    left: 60px; }
+    left: 40px; }
   .game-board.regular .columnC {
-    left: 120px; }
+    left: 80px; }
   .game-board.regular .columnD {
-    left: 180px; }
-  .game-board.regular .columnE {
-    left: 240px; }
-  .game-board.regular .columnF {
-    left: 300px; }
-  .game-board.regular .columnG {
-    left: 360px; }
-  .game-board.regular .columnH {
-    left: 420px; }
-  .game-board.regular .row1 {
-    top: 420px; }
-  .game-board.regular .row2 {
-    top: 360px; }
-  .game-board.regular .row3 {
-    top: 300px; }
-  .game-board.regular .row4 {
-    top: 240px; }
-  .game-board.regular .row5 {
-    top: 180px; }
-  .game-board.regular .row6 {
-    top: 120px; }
-  .game-board.regular .row7 {
-    top: 60px; }
-  .game-board.reverse .columnA {
-    left: 420px; }
-  .game-board.reverse .columnB {
-    left: 360px; }
-  .game-board.reverse .columnC {
-    left: 300px; }
-  .game-board.reverse .columnD {
-    left: 240px; }
-  .game-board.reverse .columnE {
-    left: 180px; }
-  .game-board.reverse .columnF {
     left: 120px; }
-  .game-board.reverse .columnG {
-    left: 60px; }
-  .game-board.reverse .row8 {
-    top: 420px; }
-  .game-board.reverse .row7 {
-    top: 360px; }
-  .game-board.reverse .row6 {
-    top: 300px; }
-  .game-board.reverse .row5 {
+  .game-board.regular .columnE {
+    left: 160px; }
+  .game-board.regular .columnF {
+    left: 200px; }
+  .game-board.regular .columnG {
+    left: 240px; }
+  .game-board.regular .columnH {
+    left: 280px; }
+  .game-board.regular .row1 {
+    top: 280px; }
+  .game-board.regular .row2 {
     top: 240px; }
-  .game-board.reverse .row4 {
-    top: 180px; }
-  .game-board.reverse .row3 {
+  .game-board.regular .row3 {
+    top: 200px; }
+  .game-board.regular .row4 {
+    top: 160px; }
+  .game-board.regular .row5 {
     top: 120px; }
+  .game-board.regular .row6 {
+    top: 80px; }
+  .game-board.regular .row7 {
+    top: 40px; }
+  .game-board.reverse .columnA {
+    left: 280px; }
+  .game-board.reverse .columnB {
+    left: 240px; }
+  .game-board.reverse .columnC {
+    left: 200px; }
+  .game-board.reverse .columnD {
+    left: 160px; }
+  .game-board.reverse .columnE {
+    left: 120px; }
+  .game-board.reverse .columnF {
+    left: 80px; }
+  .game-board.reverse .columnG {
+    left: 40px; }
+  .game-board.reverse .row8 {
+    top: 280px; }
+  .game-board.reverse .row7 {
+    top: 240px; }
+  .game-board.reverse .row6 {
+    top: 200px; }
+  .game-board.reverse .row5 {
+    top: 160px; }
+  .game-board.reverse .row4 {
+    top: 120px; }
+  .game-board.reverse .row3 {
+    top: 80px; }
   .game-board.reverse .row2 {
-    top: 60px; }
+    top: 40px; }
+
+@media (min-width: 768px) {
+  .game .game-board {
+    /** Pieces position on regular display mode **/
+    /** Pieces position on reverse display mode **/ }
+    .game .game-board.regular .columnB {
+      left: 66px; }
+    .game .game-board.regular .columnC {
+      left: 132px; }
+    .game .game-board.regular .columnD {
+      left: 198px; }
+    .game .game-board.regular .columnE {
+      left: 264px; }
+    .game .game-board.regular .columnF {
+      left: 330px; }
+    .game .game-board.regular .columnG {
+      left: 396px; }
+    .game .game-board.regular .columnH {
+      left: 462px; }
+    .game .game-board.regular .row1 {
+      top: 462px; }
+    .game .game-board.regular .row2 {
+      top: 396px; }
+    .game .game-board.regular .row3 {
+      top: 330px; }
+    .game .game-board.regular .row4 {
+      top: 264px; }
+    .game .game-board.regular .row5 {
+      top: 198px; }
+    .game .game-board.regular .row6 {
+      top: 132px; }
+    .game .game-board.regular .row7 {
+      top: 66px; }
+    .game .game-board.reverse .columnA {
+      left: 462px; }
+    .game .game-board.reverse .columnB {
+      left: 396px; }
+    .game .game-board.reverse .columnC {
+      left: 330px; }
+    .game .game-board.reverse .columnD {
+      left: 264px; }
+    .game .game-board.reverse .columnE {
+      left: 198px; }
+    .game .game-board.reverse .columnF {
+      left: 132px; }
+    .game .game-board.reverse .columnG {
+      left: 66px; }
+    .game .game-board.reverse .row8 {
+      top: 462px; }
+    .game .game-board.reverse .row7 {
+      top: 396px; }
+    .game .game-board.reverse .row6 {
+      top: 330px; }
+    .game .game-board.reverse .row5 {
+      top: 264px; }
+    .game .game-board.reverse .row4 {
+      top: 198px; }
+    .game .game-board.reverse .row3 {
+      top: 132px; }
+    .game .game-board.reverse .row2 {
+      top: 66px; } }
+
+@media (min-width: 1200px) and (min-height: 992px) {
+  .game .game-board {
+    /** Pieces position on regular display mode **/
+    /** Pieces position on reverse display mode **/ }
+    .game .game-board.regular .columnB {
+      left: 100px; }
+    .game .game-board.regular .columnC {
+      left: 200px; }
+    .game .game-board.regular .columnD {
+      left: 300px; }
+    .game .game-board.regular .columnE {
+      left: 400px; }
+    .game .game-board.regular .columnF {
+      left: 500px; }
+    .game .game-board.regular .columnG {
+      left: 600px; }
+    .game .game-board.regular .columnH {
+      left: 700px; }
+    .game .game-board.regular .row1 {
+      top: 700px; }
+    .game .game-board.regular .row2 {
+      top: 600px; }
+    .game .game-board.regular .row3 {
+      top: 500px; }
+    .game .game-board.regular .row4 {
+      top: 400px; }
+    .game .game-board.regular .row5 {
+      top: 300px; }
+    .game .game-board.regular .row6 {
+      top: 200px; }
+    .game .game-board.regular .row7 {
+      top: 100px; }
+    .game .game-board.reverse .columnA {
+      left: 700px; }
+    .game .game-board.reverse .columnB {
+      left: 600px; }
+    .game .game-board.reverse .columnC {
+      left: 500px; }
+    .game .game-board.reverse .columnD {
+      left: 400px; }
+    .game .game-board.reverse .columnE {
+      left: 300px; }
+    .game .game-board.reverse .columnF {
+      left: 200px; }
+    .game .game-board.reverse .columnG {
+      left: 100px; }
+    .game .game-board.reverse .row8 {
+      top: 700px; }
+    .game .game-board.reverse .row7 {
+      top: 600px; }
+    .game .game-board.reverse .row6 {
+      top: 500px; }
+    .game .game-board.reverse .row5 {
+      top: 400px; }
+    .game .game-board.reverse .row4 {
+      top: 300px; }
+    .game .game-board.reverse .row3 {
+      top: 200px; }
+    .game .game-board.reverse .row2 {
+      top: 100px; } }
 
 .pawn-promotion {
   opacity: 90%;

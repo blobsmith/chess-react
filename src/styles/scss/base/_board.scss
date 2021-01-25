@@ -5,15 +5,14 @@
 }
 
 .square {
-  background: #fff;
   float: left;
   font-size: 9px;
   font-weight: bold;
-  line-height: $square_size;
-  height: $square_size;
   padding: 0;
-  width: $square_size;
   position: relative;
+  line-height: $square_size_small;
+  height: $square_size_small;
+  width: $square_size_small;
 
   .square-label {
     position: absolute;
@@ -61,4 +60,24 @@
 
 .square-selected {
   background-color: yellowgreen
+}  
+
+@include for-tablet-portrait-up { 
+  .board-row {
+    .square {
+      line-height: $square_size_medium;
+      height: $square_size_medium;
+      width: $square_size_medium;
+    }
+  } 
+}
+
+@include for-desktop-up {
+  .board-row {
+    .square {
+      line-height: $square_size_large;
+      height: $square_size_large;
+      width: $square_size_large;
+    }
+  } 
 }
