@@ -6,7 +6,7 @@
 
 .square {
   float: left;
-  font-size: 9px;
+  font-size: 5px;
   font-weight: bold;
   padding: 0;
   position: relative;
@@ -21,6 +21,7 @@
     margin-bottom: 0;
     padding-bottom: 0;
     line-height: 9px;
+    z-index: 1;
   }
 
   &.dark {
@@ -68,6 +69,7 @@
       line-height: $square_size_medium;
       height: $square_size_medium;
       width: $square_size_medium;
+      font-size: 7px;
     }
   } 
 }
@@ -78,6 +80,7 @@
       line-height: $square_size_large;
       height: $square_size_large;
       width: $square_size_large;
+      font-size: 9px;
     }
   } 
 }

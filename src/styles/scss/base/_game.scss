@@ -3,6 +3,13 @@ body {
   margin: 20px;
 }
 
+::-moz-selection {
+  background: rgba(0, 0, 0, 0);
+}
+::selection {
+    background: rgba(0, 0, 0, 0);
+}
+
 ol, ul {
   padding-left: 30px;
 }
