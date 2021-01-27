@@ -8,11 +8,11 @@ const { handleSubmit, pristine, reset, submitting } = props;
         <h2>Configuration</h2>
         <form onSubmit={handleSubmit}>
         <div className="line">
-            <label htmlFor="NumberOfPlayers">Number of players:&nbsp;</label>
+            <label htmlFor="NumberOfPlayers">Nb of players:&nbsp;</label>
             <div className="value"> 2</div>
         </div>
         <div className="line">
-            <label htmlFor="autoflip">Auto flip the board after each player:&nbsp;</label>
+            <label htmlFor="autoflip">Auto flip:&nbsp;</label>
             <div className="value">
                 <Field 
                     id="autoflip" 
@@ -23,7 +23,7 @@ const { handleSubmit, pristine, reset, submitting } = props;
             </div>
         </div>
         <div className="large-line">
-            <label htmlFor="color">Dark squares color:&nbsp;</label>
+            <label htmlFor="color">Squares color:&nbsp;</label>
             <div className="value box">
             <Field name="color" component="select" >
                 <option value="black">Black</option>

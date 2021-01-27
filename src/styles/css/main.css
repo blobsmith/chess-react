@@ -39,11 +39,11 @@ ol, ul {
   top: 20%;
   margin: auto;
   width: 60%;
-  height: 235px;
   padding: 10px;
   background-color: black;
   opacity: 100%;
-  color: white; }
+  color: white;
+  height: 235px; }
   .game-intro h1 {
     text-align: center; }
   .game-intro .line {
@@ -55,14 +55,14 @@ ol, ul {
     line-height: 40px; }
   .game-intro .value {
     float: right;
-    margin-right: 100px;
-    text-align: center;
-    width: 150px; }
+    margin-right: 0;
+    width: 120px;
+    text-align: center; }
     .game-intro .value select {
       background-color: darkorange;
       color: white;
       padding: 2px;
-      width: 150px;
+      width: 80px;
       border: none;
       font-size: 16px;
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
@@ -85,6 +85,12 @@ ol, ul {
     cursor: pointer; }
     .game-intro .submit:hover {
       background-color: darkorange; }
+  @media (min-width: 1200px) and (min-height: 992px) {
+    .game-intro .value {
+      margin-right: 100px;
+      width: 150px; }
+      .game-intro .value select {
+        width: 150px; } }
 
 .board-row:after {
   clear: both;

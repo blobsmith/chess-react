@@ -47,11 +47,11 @@ ol, ul {
   top: 20%;
   margin: auto;
   width: 60%;
-  height: 235px;
   padding: 10px;
   background-color: black;
   opacity: 100%;
   color: white;
+  height: 235px;
 
   h1 {
     text-align: center;
@@ -70,15 +70,15 @@ ol, ul {
 
   .value {
     float: right;
-    margin-right: 100px;
+    margin-right: 0;
+    width: 120px;
     text-align: center;
-    width: 150px;
 
     select {
       background-color: darkorange;
       color: white;
       padding: 2px;
-      width: 150px;
+      width: 80px;
       border: none;
       font-size: 16px;
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
@@ -110,5 +110,15 @@ ol, ul {
       background-color: darkorange;
     }
 
+  }
+
+  @include for-desktop-up {
+    .value {
+      margin-right: 100px;
+      width: 150px;
+      select {
+        width: 150px;
+      }
+    }
   }
 }
