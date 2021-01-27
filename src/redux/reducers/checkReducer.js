@@ -1,5 +1,6 @@
 import movementsService from '../../services/MovementsService';
 
+const PAT = 'pat';
 const CHECK = 'check';
 const CHECK_MAT = 'check mat';
 
@@ -12,9 +13,18 @@ const checkReducer = (state = {}, action) => {
                     'status' : CHECK,
                     'color' : action.nextPlayer
                 };
-                if (movementsService.isCheckMat(action.nextPlayer, action.piecesPosition)) {
+            }
+
+            if (movementsService.playerIsBlocked(action.nextPlayer, action.piecesPosition)) {
+                if (newState['status'] !== undefined) {
                     newState = {
                         'status' : CHECK_MAT,
+                        'color' : action.nextPlayer
+                    };
+                }
+                else {
+                    newState = {
+                        'status' : PAT,
                         'color' : action.nextPlayer
                     };
                 }

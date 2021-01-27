@@ -65,27 +65,27 @@ class MovementsService {
         this.FILLED_BY_OWN = 'filled-by-own';
     }
     /**
-     * Verify if the opponent is in check mat position.
+     * Verify if the opponent is blocked or not'.
      * 
      * @param {String} opponentColor 
      *      Color of the next player.
      * @param {Object} piecesMap 
      *      The map of all pieces on board.
      */
-    isCheckMat = (opponentColor, piecesMap) => {
-        let isCheckMat = true;
+    playerIsBlocked = (opponentColor, piecesMap) => {
+        let isBlocked = true;
         for(const position in piecesMap) {
             const selectedPiece = piecesService.getPieceName(piecesMap[position], position);
             if (piecesService.getPieceColor(selectedPiece) === opponentColor) {
                 let movements = this.getAvailableMovement(selectedPiece, piecesMap);
                 movements = this.removeIllegalMovements(selectedPiece, piecesMap, movements);
                 if (movements.length > 0) {
-                    isCheckMat = false;
+                    isBlocked = false;
                     break;
                 }
             }
         }
-        return isCheckMat;
+        return isBlocked;
     }
 
     /**

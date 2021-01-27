@@ -18,14 +18,47 @@ class Board extends React.Component {
         }
     }
 
-    getSquareRef(letter, number) {
+    getSquareRef = (letter, number) => {
         return letter + number;
+    }
+
+    darkOrLightClass = (number, reverse, inverseResult = false) => {
+        let isDark = false;
+        let className;
+        if (reverse) {
+            if (number%2 !== 0) {
+                isDark = true;
+            }
+        }
+        else {
+            if (number%2 === 0) {
+                isDark = true;
+            }
+        }
+
+        if (isDark) {
+            className = 'dark '+this.props.configuration.color;
+            if (inverseResult) {
+                className = 'light';
+            }
+        }
+        else {
+            className = 'light';
+            if (inverseResult) {
+                className = 'dark '+this.props.configuration.color;
+            }
+
+        }
+
+        return className;
     }
 
     render() {
         let numbers = ['8', '7', '6', '5', '4', '3', '2', '1'];
         let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        let reverse = false;
         if (this.props.configuration.autoflip && this.props.nextPlayer === piecesService.BLACK_PIECE) {
+            reverse = true;
             numbers = numbers.reverse();
             letters = letters.reverse();
         }
@@ -35,56 +68,56 @@ class Board extends React.Component {
                 <Square 
                     key={letters[0] + number} 
                     cell={letters[0] + number} 
-                    background={number%2 === 0 ? 'dark ' + this.props.configuration.color : 'light' } 
+                    background={this.darkOrLightClass(number, reverse)} 
                     onClick={() => (this.handleMove(letters[0] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[0] + number) !== -1) ? true : false}
                 />
                 <Square 
                     key={letters[1] + number}  
                     cell={letters[1] + number} 
-                    background={number%2 !== 0 ? 'dark ' + this.props.configuration.color : 'light' } 
+                    background={this.darkOrLightClass(number, reverse, true)} 
                     onClick={() => (this.handleMove(letters[1] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[1] + number) !== -1) ? true : false}
                     />
                 <Square 
                     key={letters[2] + number}  
                     cell={letters[2] + number} 
-                    background={number%2 === 0 ? 'dark ' + this.props.configuration.color : 'light' } 
+                    background={this.darkOrLightClass(number, reverse)} 
                     onClick={() => (this.handleMove(letters[2] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[2] + number) !== -1) ? true : false}
                     />
                 <Square 
                     key={letters[3] + number}  
                     cell={letters[3] + number} 
-                    background={number%2 !== 0 ? 'dark ' + this.props.configuration.color : 'light' } 
+                    background={this.darkOrLightClass(number, reverse, true)} 
                     onClick={() => (this.handleMove(letters[3] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[3] + number) !== -1) ? true : false}
                     />
                 <Square 
                     key={letters[4] + number}  
                     cell={letters[4] + number} 
-                    background={number%2 === 0 ? 'dark ' + this.props.configuration.color : 'light' } 
+                    background={this.darkOrLightClass(number, reverse)} 
                     onClick={() => (this.handleMove(letters[4] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[4] + number) !== -1) ? true : false}
                     />
                 <Square 
                     key={letters[5] + number}  
                     cell={letters[5] + number} 
-                    background={number%2 !== 0 ? 'dark ' + this.props.configuration.color : 'light' } 
+                    background={this.darkOrLightClass(number, reverse, true)} 
                     onClick={() => (this.handleMove(letters[5] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[5] + number) !== -1) ? true : false}
                     />
                 <Square 
                     key={letters[6] + number}  
                     cell={letters[6] + number} 
-                    background={number%2 === 0 ? 'dark ' + this.props.configuration.color : 'light' } 
+                    background={this.darkOrLightClass(number, reverse)} 
                     onClick={() => (this.handleMove(letters[6] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[6] + number) !== -1) ? true : false}
                     />
                 <Square 
                     key={letters[7] + number}  
                     cell={letters[7] + number} 
-                    background={number%2 !== 0 ? 'dark ' + this.props.configuration.color : 'light' } 
+                    background={this.darkOrLightClass(number, reverse, true)} 
                     onClick={() => (this.handleMove(letters[7] + number))}
                     showDot={(this.props.availableMovements.indexOf(letters[7] + number) !== -1) ? true : false}
                     />
