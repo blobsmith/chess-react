@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import Game from './containers/Game';
 import GameIntro from './containers/GameIntro';
-import GameStatus from './containers/GameStatus';
+import GameOutro from './containers/GameOutro';
 import { Provider } from 'react-redux';
 import reducer from './redux/reducers';
 import thunk from 'redux-thunk';
@@ -16,7 +16,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Game />
         <GameIntro />
-        <GameStatus />
+        <GameOutro />
     </Provider>,
     document.getElementById('root')
 );

@@ -1,11 +1,11 @@
 
 const STATUS_INTRO = 'intro';
 const STATUS_GAME = 'game';
-const STATUS_END = 'end';
+const STATUS_OUTRO = 'outro';
 
 const initConf = {
     autoflip: false,
-    color: 'black',
+    color: 'green',
     status: STATUS_INTRO
 };
 
@@ -22,7 +22,7 @@ const configurationReducer = (state = initConf, action) => {
             break;
 
         case 'END_GAME':
-            newState = Object.assign({}, state, {status: STATUS_END});
+            newState = Object.assign({}, state, {status: STATUS_OUTRO});
             return newState;
             break;
 

@@ -27,13 +27,13 @@
   &.dark {
     background-color: black;
     &.blue {
-      background-color: #003962;
+      background-color: #6cdae7;
     }
     &.brown {
       background-color: #582900;
     }
     &.green {
-      background-color: darkgreen;
+      background-color: yellowgreen;
     }
     &.gray {
       background-color: darkslategray;
@@ -72,7 +72,7 @@
 }
 
 .square-selected {
-  background-color: yellowgreen
+  background-color: deepskyblue;
 }  
 
 @include for-tablet-portrait-up { 

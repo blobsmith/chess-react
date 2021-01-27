@@ -4,6 +4,10 @@ import enPassantService from '../../services/EnPassantService';
 const movementsReducer = (state = [], action) => {
     let movements = [];
     switch(action.type) {
+        case 'NEW_GAME':
+            movements = [];
+            break;
+            
         case 'SELECT_PIECE':
             if (action.selectedPiece !== '') {
                  // Get the available movements for the selected piece.

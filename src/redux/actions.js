@@ -50,4 +50,10 @@ export const newGameAction = (values) => ({
   values: values
 });
 
+export const restartGameAction = () => ({
+  type: 'START_INTRO'
+});
 
+export const endGameAction = () => ({
+  type: 'END_GAME'
+});

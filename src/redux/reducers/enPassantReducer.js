@@ -1,9 +1,13 @@
 import enPassantService from '../../services/EnPassantService';
 
 const enPassantReducer = (state = [], action) => {
+    let newState = [];
     switch(action.type) {
+        case 'NEW_GAME':
+            return newState;
+            break;
+
         case 'MOVE_PIECE':
-            let newState = [];
             if (action.selectedPiece !== '') {
                 newState = enPassantService.getAvailables(action.selectedPiece, action.toPosition, action.piecesPosition, newState);
             }

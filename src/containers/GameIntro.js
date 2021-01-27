@@ -12,7 +12,7 @@ class GameIntro extends React.Component {
 
     render() {
         return (
-            <div className={this.props.configuration['status'] === 'game' ? 'hidden' : 'overlay'}>
+            <div className={this.props.configuration['status'] !== 'intro' ? 'hidden' : 'overlay'}>
                 <Zoom duration={1000}>
                     <div className="game-intro">
                         <h1>Chess game</h1>

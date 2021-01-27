@@ -7,6 +7,10 @@ const CHECK_MAT = 'check mat';
 const checkReducer = (state = {}, action) => {
     let newState = {};
     switch(action.type) {
+        case 'NEW_GAME':
+            return newState = {};
+            break;
+            
         case 'CHECK_OR_CHECK_MAT':
             if (movementsService.isCheck(action.nextPlayer, action.piecesPosition)) {
                 newState = {

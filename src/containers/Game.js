@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import GameStatus from './GameStatus';
 import Board from './Board';
 import Pieces from './Pieces';
 import PawnPromotion from './PawnPromotion';
@@ -13,6 +14,7 @@ class Game extends React.Component {
         return (
             <div className="game">
                 <div className={'game-board ' + (this.props.configuration.autoflip && this.props.nextPlayer === piecesService.BLACK_PIECE ? 'reverse' : 'regular') }>
+                    <GameStatus />
                     <Board reverse={reverse} />
                     <Pieces pieces={this.props.piecesPosition} />
                     <PawnPromotion />

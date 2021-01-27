@@ -26,6 +26,25 @@ ol, ul {
 
 .game-board {
   margin: auto;
+  .game-status {
+    position: absolute;
+    top: 0;
+    width: $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small;
+    @include for-tablet-portrait-up { 
+      width: $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium;
+    }
+    
+    @include for-desktop-up {
+      width: $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large;
+    }
+
+    .play-status {
+      float: left;
+    }
+    .check-status {
+      float: right;
+    }
+  }
 }
 
 .hidden {
@@ -42,7 +61,8 @@ ol, ul {
   opacity: 0.95;
 }
 
-.game-intro {
+.game-intro,
+.game-outro {
   position: relative;
   top: 20%;
   margin: auto;

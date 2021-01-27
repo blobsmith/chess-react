@@ -3,6 +3,10 @@
 const pieceReducer = (state = '', action) => {
     let newSelectedPiece = state;
     switch(action.type) {
+        case 'NEW_GAME':
+            newSelectedPiece = '';
+            break;
+
         case 'SELECT_PIECE':
             if (action.selectedPiece !== state) {
                 newSelectedPiece = action.selectedPiece;

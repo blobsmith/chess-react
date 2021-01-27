@@ -21,6 +21,20 @@ ol, ul {
 
 .game-board {
   margin: auto; }
+  .game-board .game-status {
+    position: absolute;
+    top: 0;
+    width: 320px; }
+    @media (min-width: 768px) {
+      .game-board .game-status {
+        width: 528px; } }
+    @media (min-width: 1200px) and (min-height: 992px) {
+      .game-board .game-status {
+        width: 800px; } }
+    .game-board .game-status .play-status {
+      float: left; }
+    .game-board .game-status .check-status {
+      float: right; }
 
 .hidden {
   display: none; }
@@ -34,7 +48,8 @@ ol, ul {
   z-index: 1;
   opacity: 0.95; }
 
-.game-intro {
+.game-intro,
+.game-outro {
   position: relative;
   top: 20%;
   margin: auto;
@@ -44,21 +59,26 @@ ol, ul {
   opacity: 100%;
   color: white;
   height: 235px; }
-  .game-intro h1 {
+  .game-intro h1,
+  .game-outro h1 {
     text-align: center; }
-  .game-intro .line {
+  .game-intro .line,
+  .game-outro .line {
     margin-bottom: 2px;
     border-bottom: 1px dashed orange; }
-  .game-intro .large-line {
+  .game-intro .large-line,
+  .game-outro .large-line {
     margin-bottom: 2px;
     border-bottom: 1px dashed orange;
     line-height: 40px; }
-  .game-intro .value {
+  .game-intro .value,
+  .game-outro .value {
     float: right;
     margin-right: 0;
     width: 120px;
     text-align: center; }
-    .game-intro .value select {
+    .game-intro .value select,
+    .game-outro .value select {
       background-color: darkorange;
       color: white;
       padding: 2px;
@@ -69,12 +89,15 @@ ol, ul {
       -webkit-appearance: button;
       appearance: button;
       outline: none; }
-    .game-intro .value select option {
+    .game-intro .value select option,
+    .game-outro .value select option {
       padding: 30px; }
-  .game-intro .line-center {
+  .game-intro .line-center,
+  .game-outro .line-center {
     text-align: center;
     margin: 10px; }
-  .game-intro .submit {
+  .game-intro .submit,
+  .game-outro .submit {
     background-color: orange;
     color: white;
     width: 100px;
@@ -83,13 +106,16 @@ ol, ul {
     padding-top: 4px;
     padding-bottom: 3px;
     cursor: pointer; }
-    .game-intro .submit:hover {
+    .game-intro .submit:hover,
+    .game-outro .submit:hover {
       background-color: darkorange; }
   @media (min-width: 1200px) and (min-height: 992px) {
-    .game-intro .value {
+    .game-intro .value,
+    .game-outro .value {
       margin-right: 100px;
       width: 150px; }
-      .game-intro .value select {
+      .game-intro .value select,
+      .game-outro .value select {
         width: 150px; } }
 
 .board-row:after {
@@ -117,11 +143,11 @@ ol, ul {
   .square.dark {
     background-color: black; }
     .square.dark.blue {
-      background-color: #003962; }
+      background-color: #6cdae7; }
     .square.dark.brown {
       background-color: #582900; }
     .square.dark.green {
-      background-color: darkgreen; }
+      background-color: yellowgreen; }
     .square.dark.gray {
       background-color: darkslategray; }
     .square.dark.orange {
@@ -146,7 +172,7 @@ ol, ul {
     background-color: orange; }
 
 .square-selected {
-  background-color: yellowgreen; }
+  background-color: deepskyblue; }
 
 @media (min-width: 768px) {
   .board-row .square {
