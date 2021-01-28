@@ -22,10 +22,10 @@ class GameOutro extends React.Component {
                 <Zoom duration={1000}>
                     <div className="game-outro">
                         <h1>And the winner is...</h1>
-                        <div class="line-center">
+                        <div className="line-center">
                             <b>{winner !== '' ? piecesService.getColorLabel(winner): ''}</b>{winner !== '' ? ', congratulations !' : 'No winner for this game.'}
                         </div>
-                        <div class="line-center">
+                        <div className="line-center">
                             <button onClick={this.handleClick} className="submit">Start a new Game</button>
                         </div>
                     </div>

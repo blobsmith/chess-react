@@ -22,6 +22,17 @@ const { handleSubmit, pristine, reset, submitting } = props;
                     />
             </div>
         </div>
+        <div className="line">
+            <label htmlFor="helpmove">Help on move:&nbsp;</label>
+            <div className="value">
+                <Field 
+                    id="helpmove" 
+                    name="helpmove" 
+                    component="input" 
+                    type="checkbox" 
+                    />
+            </div>
+        </div>
         <div className="large-line">
             <label htmlFor="color">Squares color:&nbsp;</label>
             <div className="value box">
@@ -32,6 +43,7 @@ const { handleSubmit, pristine, reset, submitting } = props;
                 <option value="green">Green</option>
                 <option value="gray">Gray</option>
                 <option value="orange">Orange</option>
+                <option value="red">Red</option>
                 <option value="violet">Violet</option>
             </Field>
             </div>

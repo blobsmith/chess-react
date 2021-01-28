@@ -6,6 +6,7 @@ const STATUS_OUTRO = 'outro';
 const initConf = {
     autoflip: false,
     color: 'green',
+    helpmove: false,
     status: STATUS_INTRO
 };
 
@@ -16,6 +17,7 @@ const configurationReducer = (state = initConf, action) => {
             newState = {
                 color: action.values.color,
                 autoflip: action.values.autoflip,
+                helpmove: action.values.helpmove,
                 status: STATUS_GAME
             };
             return newState;

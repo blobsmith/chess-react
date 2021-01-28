@@ -71,7 +71,7 @@ ol, ul {
   background-color: black;
   opacity: 100%;
   color: white;
-  height: 235px;
+  height: 250px;
 
   h1 {
     text-align: center;
@@ -140,5 +140,12 @@ ol, ul {
         width: 150px;
       }
     }
+  }
+}
+
+.game-outro {
+  height: 210px;
+  @include for-tablet-portrait-up {
+    height: 170px;
   }
 }
