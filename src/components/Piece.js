@@ -5,9 +5,8 @@ const Piece = ( props ) => {
         <div
             key={props.pieceKey}
             className={'piece ' + props.className + (props.selected ? ' square-selected' : '')}
-            onClick={() => (props.onClick())}
         >
-            <img src={props.image}  alt="" />
+            <img src={props.image}  alt="" onClick={() => (props.onClick())} />
         </div>
     )
 };
