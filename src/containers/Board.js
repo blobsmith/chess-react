@@ -22,7 +22,8 @@ class Board extends React.Component {
         return letter + number;
     }
 
-    darkOrLightClass = (number, reverse, inverseResult = false) => {
+    getBackground = (letter, number, reverse, inverseResult = false) => {
+        const position = this.getSquareRef(letter, number);
         let isDark = false;
         let className;
         if (reverse) {
@@ -47,9 +48,11 @@ class Board extends React.Component {
             if (inverseResult) {
                 className = 'dark '+this.props.configuration.color;
             }
-
         }
 
+        if (this.props.lastMove.indexOf(position) !== -1) {
+            className = className + ' last-move';
+        }
         return className;
     }
 
@@ -72,62 +75,61 @@ class Board extends React.Component {
             numbers = numbers.reverse();
             letters = letters.reverse();
         }
-
         const squares = numbers.map((number, index) => (
             <div key={'row'+number} className={"board-row row-" + number} >
                 <Square 
                     key={letters[0] + number} 
                     cell={letters[0] + number} 
-                    background={this.darkOrLightClass(number, reverse)} 
+                    background={this.getBackground(letters[0], number, reverse)} 
                     onClick={() => (this.handleMove(letters[0] + number))}
                     showDot={this.showDot(letters[0], number)}
                 />
                 <Square 
                     key={letters[1] + number}  
                     cell={letters[1] + number} 
-                    background={this.darkOrLightClass(number, reverse, true)} 
+                    background={this.getBackground(letters[1], number, reverse, true)} 
                     onClick={() => (this.handleMove(letters[1] + number))}
                     showDot={this.showDot(letters[1], number)}
                     />
                 <Square 
                     key={letters[2] + number}  
                     cell={letters[2] + number} 
-                    background={this.darkOrLightClass(number, reverse)} 
+                    background={this.getBackground(letters[2], number, reverse)} 
                     onClick={() => (this.handleMove(letters[2] + number))}
                     showDot={this.showDot(letters[2], number)}
                     />
                 <Square 
                     key={letters[3] + number}  
                     cell={letters[3] + number} 
-                    background={this.darkOrLightClass(number, reverse, true)} 
+                    background={this.getBackground(letters[3], number, reverse, true)} 
                     onClick={() => (this.handleMove(letters[3] + number))}
                     showDot={this.showDot(letters[3], number)}
                     />
                 <Square 
                     key={letters[4] + number}  
                     cell={letters[4] + number} 
-                    background={this.darkOrLightClass(number, reverse)} 
+                    background={this.getBackground(letters[4], number, reverse)} 
                     onClick={() => (this.handleMove(letters[4] + number))}
                     showDot={this.showDot(letters[4], number)}
                     />
                 <Square 
                     key={letters[5] + number}  
                     cell={letters[5] + number} 
-                    background={this.darkOrLightClass(number, reverse, true)} 
+                    background={this.getBackground(letters[5], number, reverse, true)} 
                     onClick={() => (this.handleMove(letters[5] + number))}
                     showDot={this.showDot(letters[5], number)}
                     />
                 <Square 
                     key={letters[6] + number}  
                     cell={letters[6] + number} 
-                    background={this.darkOrLightClass(number, reverse)} 
+                    background={this.getBackground(letters[6], number, reverse)} 
                     onClick={() => (this.handleMove(letters[6] + number))}
                     showDot={this.showDot(letters[6], number)}
                     />
                 <Square 
                     key={letters[7] + number}  
                     cell={letters[7] + number} 
-                    background={this.darkOrLightClass(number, reverse, true)} 
+                    background={this.getBackground(letters[7], number, reverse, true)} 
                     onClick={() => (this.handleMove(letters[7] + number))}
                     showDot={this.showDot(letters[7], number)}
                     />

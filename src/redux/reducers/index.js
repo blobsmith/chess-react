@@ -8,9 +8,11 @@ import pawnPromotionReducer from './pawnPromotionReducer';
 import enPassantReducer from './enPassantReducer';
 import checkReducer from './checkReducer';
 import configurationReducer from './configurationReducer';
+import historyReducer from './historyReducer';
 import { reducer as reduxFormReducer } from 'redux-form';
 
 const chessReducers = combineReducers({
+  history: historyReducer,
   form: reduxFormReducer,
   configuration: configurationReducer,
   pawnPromotion: pawnPromotionReducer,

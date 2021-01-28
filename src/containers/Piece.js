@@ -12,25 +12,21 @@ class Piece extends React.Component {
         if (this.props.nextPlayer === this.props.color) {
 
             // If piece is selected, unselect it on next click.
-            if (piecesService.getCurrentPosition(this.props.selectedPiece) === this.props.position) {
+            if (piecesService.getCurrentPosition(selectedPiece) === position) {
                 this.props.unselect();
             }
             else {
                 // If no piece has been selected, select it.
-                if (this.props.selectedPiece === '') {
-                    this.props.select(piecesService.getPieceName(this.props.name, this.props.position));
+                this.props.select(piecesService.getPieceName(this.props.name, position));
+            }
+        }
+        else {
+            if (selectedPiece !== '') {
+                // In case of Pawn, manage the promotion.
+                if (promotionService.promotionIsNeeded(selectedPiece, position)) {
+                    this.props.launchPawnPromotion();
                 }
-                else {
-                    // If a piece is selected and click on other piece, check if we have to eat the opponent.
-                    if (piecesService.getPieceColor(this.props.selectedPiece) !== this.props.color) {
-
-                        // In case of Pawn, manage the promotion.
-                        if (promotionService.promotionIsNeeded(selectedPiece, position)) {
-                            this.props.launchPawnPromotion();
-                        }
-                        this.props.move(this.props.selectedPiece, this.props.position);
-                    }
-                }
+                this.props.move(selectedPiece, position);
             }
         }
     }

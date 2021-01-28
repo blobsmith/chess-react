@@ -47,6 +47,9 @@
     &.red {
       background-color: crimson;
     }
+    &.last-move {
+      background-color: lightskyblue;
+    }
 
     .square-label {
       color: white;
@@ -55,7 +58,12 @@
 
   &.light {
     background-color: #ffffee;
+    &.last-move {
+      background-color: lightskyblue;
+    }
   }
+
+
 
   &:focus {
     outline: none;

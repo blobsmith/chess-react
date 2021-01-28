@@ -162,10 +162,14 @@ ol, ul {
       background-color: darkmagenta; }
     .square.dark.red {
       background-color: crimson; }
+    .square.dark.last-move {
+      background-color: lightskyblue; }
     .square.dark .square-label {
       color: white; }
   .square.light {
     background-color: #ffffee; }
+    .square.light.last-move {
+      background-color: lightskyblue; }
   .square:focus {
     outline: none; }
   .square .dot {

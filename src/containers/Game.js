@@ -6,6 +6,7 @@ import Board from './Board';
 import Pieces from './Pieces';
 import PawnPromotion from './PawnPromotion';
 import piecesService from '../services/PiecesService';
+import History from '../services/HistoryService';
 
 class Game extends React.Component {
 
@@ -15,7 +16,7 @@ class Game extends React.Component {
             <div className="game">
                 <div className={'game-board ' + (this.props.configuration.autoflip && this.props.nextPlayer === piecesService.BLACK_PIECE ? 'reverse' : 'regular') }>
                     <GameStatus />
-                    <Board reverse={reverse} />
+                    <Board reverse={reverse} lastMove={this.props.history.getLastMove()} />
                     <Pieces pieces={this.props.piecesPosition} />
                     <PawnPromotion />
                 </div>
@@ -29,6 +30,7 @@ const mapStatesToProps = (state) => {
         piecesPosition: state.piecesPosition,
         configuration: state.configuration,
         nextPlayer: state.nextPlayer,
+        history: new History(state.history),
     }
 };
 
