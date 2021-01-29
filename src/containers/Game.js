@@ -5,6 +5,7 @@ import GameStatus from './GameStatus';
 import Board from './Board';
 import Pieces from './Pieces';
 import PawnPromotion from './PawnPromotion';
+import GameConf from './GameConf';
 import piecesService from '../services/PiecesService';
 import History from '../services/HistoryService';
 
@@ -19,6 +20,7 @@ class Game extends React.Component {
                     <Board reverse={reverse} lastMove={this.props.history.getLastMove()} />
                     <Pieces pieces={this.props.piecesPosition} />
                     <PawnPromotion />
+                    <GameConf />
                 </div>
             </div>
         );

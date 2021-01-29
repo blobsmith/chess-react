@@ -17,8 +17,10 @@ class GameIntro extends React.Component {
                     <div className="game-intro">
                         <h1>Chess game</h1>
                         <ConfigurationForm 
-                        onSubmit={this.submit} 
-                        initialValues={this.props.configuration} />
+                            onSubmit={this.submit} 
+                            initialValues={this.props.configuration} 
+                            submitLabel="Start"
+                        />
                     </div>
                 </Zoom>
             </div>

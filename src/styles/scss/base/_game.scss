@@ -27,6 +27,12 @@ ol, ul {
 .game-board {
   margin: auto;
   .game-status {
+    background-color: black;
+    height: 20px;
+    color: white;
+    line-height: 20px;
+    padding-left: 5px;
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     width: $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small;
@@ -36,6 +42,32 @@ ol, ul {
     
     @include for-desktop-up {
       width: $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large;
+    }
+
+    .menu {
+      cursor: pointer;
+      float: left;
+      margin-right: 4px;
+      padding-top: 3px;
+      @extend %fa-icon;
+      @extend .far;
+    
+      &:before {
+        content: fa-content($fa-var-caret-square-down);
+      }
+
+      &:hover {
+        color: darkorange;
+      }
+      &.active {
+        color: orange;
+        @extend %fa-icon;
+        @extend .far;
+    
+        &:before {
+          content: fa-content($fa-var-caret-square-up);
+        }
+      }
     }
 
     .play-status {
@@ -62,7 +94,8 @@ ol, ul {
 }
 
 .game-intro,
-.game-outro {
+.game-outro,
+.game-conf  {
   position: relative;
   top: 20%;
   margin: auto;
@@ -91,14 +124,14 @@ ol, ul {
   .value {
     float: right;
     margin-right: 0;
-    width: 120px;
+    width: 110px;
     text-align: center;
 
     select {
       background-color: darkorange;
       color: white;
       padding: 2px;
-      width: 80px;
+      width: 100px;
       border: none;
       font-size: 16px;
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
@@ -119,7 +152,7 @@ ol, ul {
   .submit {
     background-color: orange;
     color: white;
-    width: 100px;
+    width: 170px;
     border: none;
     text-transform: uppercase;
     padding-top: 4px;
@@ -141,6 +174,30 @@ ol, ul {
       }
     }
   }
+}
+
+.game-conf {
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 20px;
+  z-index: 1;
+  background-color: black;
+  opacity: 100%;
+  color: white;
+  width: $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small;
+  height: $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small;
+  @include for-tablet-portrait-up { 
+    width: $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium;
+    height: $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium + $square_size_medium;
+  }
+  
+  @include for-desktop-up {
+    width: $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large;
+    height: $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large + $square_size_large;
+  }
+
 }
 
 .game-outro {

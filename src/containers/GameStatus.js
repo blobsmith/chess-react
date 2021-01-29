@@ -1,9 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import piecesService from '../services/PiecesService';
-import { endGameAction } from '../redux/actions';
+import { pendingGameAction, continueGameAction } from '../redux/actions';
 
 class GameStatus extends React.Component {
+
+    handleClick = () => {
+        if (this.props.configuration['status'] !== 'pending') {
+            this.props.pendingGame();
+        }
+        else {
+            this.props.continueGame({});
+        }
+    }
+
 
     render() {
         let status = '';
@@ -11,12 +21,10 @@ class GameStatus extends React.Component {
         if(this.props.checkOrCheckMat['status'] !== undefined) {
             playerColor = this.props.checkOrCheckMat['color'];
             status = this.props.checkOrCheckMat['status'];
-            if (status === 'check mat') {
-                this.props.endGame();
-            }
         }
         return (
             <div className="game-status">
+                <div className={this.props.configuration['status'] === 'pending' ? 'menu active': 'menu'} onClick={this.handleClick}></div>
                 <div className="play-status">{ piecesService.getColorLabel(this.props.nextPlayer)  + ' to play.'}</div>
                 <div className={"check-status " + (playerColor === '' ? 'hidden' : '')} >{piecesService.getColorLabel(playerColor) + ' are ' + status + '.'}</div>
             </div>
@@ -27,14 +35,18 @@ class GameStatus extends React.Component {
 const mapStatesToProps = (state) => {
     return {
         nextPlayer: state.nextPlayer,
-        checkOrCheckMat: state.checkOrCheckMat
+        checkOrCheckMat: state.checkOrCheckMat,
+        configuration: state.configuration,
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        endGame: () => {
-            dispatch(endGameAction());
+        pendingGame: () => {
+            dispatch(pendingGameAction());
+        },
+        continueGame: (value) => {
+            dispatch(continueGameAction(value));
         },
     };
 };

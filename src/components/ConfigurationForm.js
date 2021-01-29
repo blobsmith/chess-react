@@ -49,10 +49,12 @@ const { handleSubmit, pristine, reset, submitting } = props;
             </div>
         </div>
         <div className="line-center">
-        <button 
-            type="submit"
-            className="submit"
-        >Start</button>
+            <button 
+                type="submit"
+                className="submit"
+            >
+                {props.submitLabel}
+            </button>
         </div>
         </form>
     </div>

@@ -29,6 +29,12 @@ export const movePieceAction = (selectedPiece, toPosition) => (
       piecesPosition: getState().piecesPosition,
       nextPlayer: getState().nextPlayer
     });
+
+    if (getState().checkOrCheckMat['status'] === 'check mat') {
+        dispatch({
+          type: 'END_GAME'
+        });
+    }
   });
 
 export const activePawnPromotionAction = () => ({
@@ -52,6 +58,15 @@ export const newGameAction = (values) => ({
 
 export const restartGameAction = () => ({
   type: 'START_INTRO'
+});
+
+export const pendingGameAction = () => ({
+  type: 'PENDING_GAME'
+});
+
+export const continueGameAction = (values) => ({
+  type: 'CONTINUE_GAME',
+  values: values
 });
 
 export const endGameAction = () => ({
