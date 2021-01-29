@@ -21,7 +21,7 @@ class Piece extends React.Component {
             }
         }
         else {
-            if (selectedPiece !== '') {
+            if (selectedPiece !== '' && this.props.availableMovements.indexOf(position) !== -1) {
                 // In case of Pawn, manage the promotion.
                 if (promotionService.promotionIsNeeded(selectedPiece, position)) {
                     this.props.launchPawnPromotion();
@@ -57,7 +57,8 @@ class Piece extends React.Component {
 const mapStatesToProps = (state) => {
     return {
         selectedPiece: state.selectedPiece,
-        nextPlayer: state.nextPlayer
+        nextPlayer: state.nextPlayer,
+        availableMovements: state.availableMovements
     }
 };
 

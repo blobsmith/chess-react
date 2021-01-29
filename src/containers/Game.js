@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import GameStatus from './GameStatus';
 import Board from './Board';
+import StatusOfLost from './StatusOfLost';
 import Pieces from './Pieces';
 import PawnPromotion from './PawnPromotion';
 import GameConf from './GameConf';
@@ -18,6 +19,7 @@ class Game extends React.Component {
                 <div className={'game-board ' + (this.props.configuration.autoflip && this.props.nextPlayer === piecesService.BLACK_PIECE ? 'reverse' : 'regular') }>
                     <GameStatus />
                     <Board reverse={reverse} lastMove={this.props.history.getLastMove()} />
+                    <StatusOfLost />
                     <Pieces pieces={this.props.piecesPosition} />
                     <PawnPromotion />
                     <GameConf />

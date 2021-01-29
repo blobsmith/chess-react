@@ -53,6 +53,34 @@ class EnPassantService {
         return newState;
     }
 
+
+/**
+ * Check if the current movement is a En passant move.
+ *
+ * @param {String} selectedPiece 
+ *      The piece moving.
+ * @param {String} toPosition 
+ *      The to position of the selected piece.
+ * @param {Object} piecesMap 
+ *      The map of all pieces on board.
+ */
+    isAnEnPassantMove = (selectedPiece, toPosition, piecesMap) => {
+        let isEnPassant = false;
+        // Check if it's Pawn.
+        if (piecesService.isPawn(selectedPiece)) {
+
+            // Check if the pawn is changing its column
+            if (piecesService.getPositionColumn(selectedPiece) !== piecesService.getPositionColumn(toPosition)) {
+                
+                //Check if there is no piece on the toPosition
+                if (piecesMap[toPosition] === undefined) {
+                    isEnPassant = true;
+                }
+            }
+        }
+        return isEnPassant;
+    }
+
     /**
      * Add the "en passant" movement for the selected piece if exists.
      * 

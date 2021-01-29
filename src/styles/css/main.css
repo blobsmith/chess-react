@@ -4631,6 +4631,10 @@ ol, ul {
 .kbd-navigation .square:focus {
   background: #ddd; }
 
+.font-small {
+  font-size: 11px;
+  margin-left: 1px; }
+
 .game {
   display: flex;
   flex-direction: row; }
@@ -4716,7 +4720,9 @@ ol, ul {
     float: right;
     margin-right: 0;
     width: 110px;
-    text-align: center; }
+    text-align: center;
+    line-height: 15px;
+    height: 15px; }
     .game-intro .value select,
     .game-outro .value select,
     .game-conf .value select {
@@ -4730,10 +4736,10 @@ ol, ul {
       -webkit-appearance: button;
       appearance: button;
       outline: none; }
-    .game-intro .value select option,
-    .game-outro .value select option,
-    .game-conf .value select option {
-      padding: 30px; }
+      .game-intro .value select option,
+      .game-outro .value select option,
+      .game-conf .value select option {
+        padding: 30px; }
   .game-intro .line-center,
   .game-outro .line-center,
   .game-conf .line-center {
@@ -4754,12 +4760,12 @@ ol, ul {
     .game-outro .submit:hover,
     .game-conf .submit:hover {
       background-color: darkorange; }
-  @media (min-width: 1200px) and (min-height: 992px) {
+  @media (min-width: 768px) {
     .game-intro .value,
     .game-outro .value,
     .game-conf .value {
       margin-right: 100px;
-      width: 150px; }
+      width: 100px; }
       .game-intro .value select,
       .game-outro .value select,
       .game-conf .value select {
@@ -4791,6 +4797,32 @@ ol, ul {
   @media (min-width: 768px) {
     .game-outro {
       height: 170px; } }
+
+.status-of-lost {
+  font-family: Arial, Helvetica, sans-serif; }
+  .status-of-lost .bag {
+    padding-left: 5px;
+    box-sizing: border-box;
+    width: 50%; }
+    .status-of-lost .bag .piece-type {
+      margin-right: 3px; }
+    .status-of-lost .bag .diff {
+      line-height: 17px;
+      float: right;
+      margin-right: 2px;
+      font-size: 11px; }
+      .status-of-lost .bag .diff .ok {
+        color: green; }
+      .status-of-lost .bag .diff .ko {
+        color: red; }
+    .status-of-lost .bag.whites-bag {
+      background-color: white;
+      color: black;
+      float: left; }
+    .status-of-lost .bag.blacks-bag {
+      background-color: black;
+      color: white;
+      float: right; }
 
 .board-row:after {
   clear: both;

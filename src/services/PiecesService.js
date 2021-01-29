@@ -10,9 +10,51 @@ class PiecesService {
         this.QUEEN = 'Q';
         this.KING = 'K';
     
-        /* Pieces color definition */
+        /* Pieces color */
         this.WHITE_PIECE = 'w';
         this.BLACK_PIECE = 'b';
+    }
+    
+    /**
+     * Get the piece value.
+     * 
+     * @param {string} pieceName 
+     *      the string definition of a piece.
+     */
+    getPieceValue = (pieceName) => {
+        let value = 0;
+        switch(this.getPieceType(pieceName)) {
+            case this.PAWN:
+                value = 1;
+                break;
+
+            case this.KNIGHT:
+            case this.BISHOP:
+                value = 3;
+                break;
+
+            case this.ROOK:
+                value = 5;
+                break;
+
+            case this.QUEEN:
+                value = 9;
+                break;
+
+            default:
+                value = 0;
+        }
+        return value;
+    }
+
+    /**
+     * Get the code of a Pawn
+     * 
+     * @param {String} color 
+     *      Color of the pawn wanted.
+     */
+    getPawn = (color) => {
+        return this.PAWN + color;
     }
 
     /**
@@ -127,6 +169,20 @@ class PiecesService {
             isKing = true;
         }
         return isKing;
+    }
+
+    /**
+     * True if the piece is white.
+     * 
+     * @param {String} pieceName 
+     *      Name of the piece.
+     */
+    isWhite = (pieceName) => {
+        let isWhite = false;
+        if (this.getPieceColor(pieceName) === this.WHITE_PIECE) {
+            isWhite = true;
+        }
+        return isWhite;
     }
 
     /**
