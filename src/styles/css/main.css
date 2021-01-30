@@ -4746,9 +4746,13 @@ ol, ul {
     text-align: center;
     margin: 10px; }
   .game-intro .submit,
+  .game-intro .stop,
   .game-outro .submit,
-  .game-conf .submit {
-    background-color: orange;
+  .game-outro .stop,
+  .game-conf .submit,
+  .game-conf .stop {
+    margin: 3px;
+    background-color: darkorange;
     color: white;
     width: 170px;
     border: none;
@@ -4757,9 +4761,20 @@ ol, ul {
     padding-bottom: 3px;
     cursor: pointer; }
     .game-intro .submit:hover,
+    .game-intro .stop:hover,
     .game-outro .submit:hover,
-    .game-conf .submit:hover {
-      background-color: darkorange; }
+    .game-outro .stop:hover,
+    .game-conf .submit:hover,
+    .game-conf .stop:hover {
+      background-color: orange; }
+  .game-intro .stop,
+  .game-outro .stop,
+  .game-conf .stop {
+    background-color: darkred; }
+    .game-intro .stop:hover,
+    .game-outro .stop:hover,
+    .game-conf .stop:hover {
+      background-color: red; }
   @media (min-width: 768px) {
     .game-intro .value,
     .game-outro .value,

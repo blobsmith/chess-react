@@ -49,6 +49,15 @@ const { handleSubmit, pristine, reset, submitting } = props;
             </div>
         </div>
         <div className="line-center">
+        {
+            props.onStop !== undefined ? 
+                <button onClick={props.onStop}
+                    className="stop"
+                >
+                    Stop
+                </button> 
+            : ''
+        }
             <button 
                 type="submit"
                 className="submit"

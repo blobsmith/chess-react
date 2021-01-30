@@ -157,8 +157,10 @@ ol, ul {
     margin: 10px;
   }
 
-  .submit {
-    background-color: orange;
+  .submit,
+  .stop {
+    margin: 3px;
+    background-color: darkorange;
     color: white;
     width: 170px;
     border: none;
@@ -168,9 +170,16 @@ ol, ul {
     cursor: pointer;
 
     &:hover {
-      background-color: darkorange;
+      background-color: orange;
     }
 
+  }
+
+  .stop {
+    background-color: darkred;
+    &:hover {
+      background-color: red;
+    }
   }
 
   @include for-tablet-portrait-up {
@@ -232,7 +241,7 @@ ol, ul {
       float: right;
       margin-right: 2px;
       font-size: 11px;
-      
+
       .ok {
         color: green;
       }
