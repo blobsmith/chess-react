@@ -40,7 +40,6 @@ class StatusOfLost extends React.Component {
 
                 whiteDiff = bag[piecesService.BLACK_PIECE]['value'] - bag[piecesService.WHITE_PIECE]['value'];
                 blackDiff = whiteDiff * (-1);
-                console.log(whiteDiff, blackDiff);
             }
         }
 
