@@ -4696,7 +4696,7 @@ ol, ul {
   width: 60%;
   padding: 10px;
   background-color: black;
-  opacity: 100%;
+  opacity: 1;
   color: white;
   height: 250px; }
   .game-intro h1,
@@ -4794,7 +4794,7 @@ ol, ul {
   top: 20px;
   z-index: 1;
   background-color: black;
-  opacity: 100%;
+  opacity: 1;
   color: white;
   width: 320px;
   height: 320px; }
@@ -4838,82 +4838,6 @@ ol, ul {
       background-color: black;
       color: white;
       float: right; }
-
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table; }
-
-.square {
-  float: left;
-  font-size: 5px;
-  font-weight: bold;
-  padding: 0;
-  position: relative;
-  line-height: 40px;
-  height: 40px;
-  width: 40px; }
-  .square .square-label {
-    position: absolute;
-    right: 2px;
-    bottom: 2px;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    line-height: 9px;
-    z-index: 1; }
-  .square.dark {
-    background-color: black; }
-    .square.dark.blue {
-      background-color: #6cdae7; }
-    .square.dark.brown {
-      background-color: #582900; }
-    .square.dark.green {
-      background-color: yellowgreen; }
-    .square.dark.gray {
-      background-color: darkslategray; }
-    .square.dark.orange {
-      background-color: darkorange; }
-    .square.dark.violet {
-      background-color: darkmagenta; }
-    .square.dark.red {
-      background-color: crimson; }
-    .square.dark.last-move {
-      background-color: lightskyblue; }
-    .square.dark .square-label {
-      color: white; }
-  .square.light {
-    background-color: #ffffee; }
-    .square.light.last-move {
-      background-color: lightskyblue; }
-  .square:focus {
-    outline: none; }
-  .square .dot {
-    height: 22%;
-    width: 22%;
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 50%;
-    margin: 39%;
-    z-index: 1;
-    position: absolute;
-    background-color: orange; }
-
-.square-selected {
-  background-color: deepskyblue; }
-
-@media (min-width: 768px) {
-  .board-row .square {
-    line-height: 66px;
-    height: 66px;
-    width: 66px;
-    font-size: 7px; } }
-
-@media (min-width: 1200px) and (min-height: 992px) {
-  .board-row .square {
-    line-height: 100px;
-    height: 100px;
-    width: 100px;
-    font-size: 9px; } }
 
 .pieces {
   position: absolute;
@@ -5129,8 +5053,84 @@ ol, ul {
     .game .game-board.reverse .row2 {
       top: 100px; } }
 
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.square {
+  float: left;
+  font-size: 5px;
+  font-weight: bold;
+  padding: 0;
+  position: relative;
+  line-height: 40px;
+  height: 40px;
+  width: 40px; }
+  .square .square-label {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: 9px;
+    z-index: 1; }
+  .square.dark {
+    background-color: black; }
+    .square.dark.blue {
+      background-color: #6cdae7; }
+    .square.dark.brown {
+      background-color: #582900; }
+    .square.dark.green {
+      background-color: yellowgreen; }
+    .square.dark.gray {
+      background-color: darkslategray; }
+    .square.dark.orange {
+      background-color: darkorange; }
+    .square.dark.violet {
+      background-color: darkmagenta; }
+    .square.dark.red {
+      background-color: crimson; }
+    .square.dark.last-move {
+      background-color: lightskyblue; }
+    .square.dark .square-label {
+      color: white; }
+  .square.light {
+    background-color: #ffffee; }
+    .square.light.last-move {
+      background-color: lightskyblue; }
+  .square:focus {
+    outline: none; }
+  .square .dot {
+    height: 22%;
+    width: 22%;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+    margin: 39%;
+    z-index: 1;
+    position: absolute;
+    background-color: orange; }
+
+.square-selected {
+  background-color: deepskyblue; }
+
+@media (min-width: 768px) {
+  .board-row .square {
+    line-height: 66px;
+    height: 66px;
+    width: 66px;
+    font-size: 7px; } }
+
+@media (min-width: 1200px) and (min-height: 992px) {
+  .board-row .square {
+    line-height: 100px;
+    height: 100px;
+    width: 100px;
+    font-size: 9px; } }
+
 .pawn-promotion {
-  opacity: 90%;
+  opacity: 0.9;
   background-color: white;
   width: 100%;
   height: 681px;

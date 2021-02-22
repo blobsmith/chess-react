@@ -107,7 +107,7 @@ ol, ul {
   width: 60%;
   padding: 10px;
   background-color: black;
-  opacity: 100%;
+  opacity: 1;
   color: white;
   height: 250px;
 
@@ -201,7 +201,7 @@ ol, ul {
   top: 20px;
   z-index: 1;
   background-color: black;
-  opacity: 100%;
+  opacity: 1;
   color: white;
   width: $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small;
   height: $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small + $square_size_small;
