@@ -5138,12 +5138,21 @@ ol, ul {
   margin-top: 19px;
   top: 0; }
   .pawn-promotion .label {
-    top: 195px;
+    top: 48px;
+    left: 0;
     position: relative;
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
-    width: 680px; }
+    width: 325px; }
+  @media (min-width: 768px) {
+    .pawn-promotion .label {
+      top: 150px;
+      width: 526px; } }
+  @media (min-width: 1200px) and (min-height: 992px) {
+    .pawn-promotion {
+      top: 195px;
+      width: 680px; } }
   .pawn-promotion .piece:hover {
     background-color: orange;
     border: 2px solid black; }
