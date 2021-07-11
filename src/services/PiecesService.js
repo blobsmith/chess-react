@@ -1,3 +1,15 @@
+import blackbishop from '../images/pieces/black-bishop.png';
+import whitebishop from '../images/pieces/white-bishop.png';
+import blackking from '../images/pieces/black-king.png';
+import whiteking from '../images/pieces/white-king.png';
+import blackknight from '../images/pieces/black-knight.png';
+import whiteknight from '../images/pieces/white-knight.png';
+import blackpawn from '../images/pieces/black-pawn.png';
+import whitepawn from '../images/pieces/white-pawn.png';
+import blackqueen from '../images/pieces/black-queen.png';
+import whitequeen from '../images/pieces/white-queen.png';
+import blackrook from '../images/pieces/black-rook.png';
+import whiterook from '../images/pieces/white-rook.png';
 
 class PiecesService {
 
@@ -13,6 +25,19 @@ class PiecesService {
         /* Pieces color */
         this.WHITE_PIECE = 'w';
         this.BLACK_PIECE = 'b';
+        this.images = {};
+        this.images[this.PAWN+this.BLACK_PIECE] = blackpawn;
+        this.images[this.PAWN+this.WHITE_PIECE] = whitepawn;
+        this.images[this.ROOK+this.BLACK_PIECE] = blackrook;
+        this.images[this.ROOK+this.WHITE_PIECE] = whiterook;
+        this.images[this.BISHOP+this.BLACK_PIECE] = blackbishop;
+        this.images[this.BISHOP+this.WHITE_PIECE] = whitebishop;
+        this.images[this.KNIGHT+this.BLACK_PIECE] = blackknight;
+        this.images[this.KNIGHT+this.WHITE_PIECE] = whiteknight;
+        this.images[this.QUEEN+this.BLACK_PIECE] = blackqueen;
+        this.images[this.QUEEN+this.WHITE_PIECE] = whitequeen;
+        this.images[this.KING+this.BLACK_PIECE] = blackking;
+        this.images[this.KING+this.WHITE_PIECE] = whiteking;
     }
     
     /**
@@ -202,7 +227,17 @@ class PiecesService {
         return label;
     }
 
-
+    /**
+     * Get a piece image from piece type and piece color.
+     *
+     * @param {String} name
+     *      The name of the piece
+     */
+    getImage = (name) => {
+        const color = this.getPieceColor(name);
+        const type = this.getPieceType(name);
+        return this.images[type+color]
+    }
 }
 
 

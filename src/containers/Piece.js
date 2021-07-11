@@ -17,7 +17,7 @@ class Piece extends React.Component {
             }
             else {
                 // If no piece has been selected, select it.
-                this.props.select(piecesService.getPieceName(this.props.name, position));
+                this.props.select(this.props.name);
             }
         }
         else {
@@ -34,13 +34,12 @@ class Piece extends React.Component {
     renderPiece() {
         const column = this.props.position.substring(0,1);
         const row = this.props.position.substring(1,2);
-        const piece = this.props.color === piecesService.WHITE_PIECE ? this.props.white : this.props.black;
-
+        const image = piecesService.getImage(this.props.name);
         return (
                 <PieceComponent
-                pieceKey={piecesService.getPieceName(this.props.name, this.props.position)}
-                selected={this.props.selectedPiece === piecesService.getPieceName(this.props.name, this.props.position)}
-                image={piece}
+                pieceKey={this.props.name}
+                selected={this.props.selectedPiece === this.props.name}
+                image={image}
                 className={'row'+ row + ' column' + column}
                 onClick={() => {
                     this.handleClick(this.props.selectedPiece, this.props.position);

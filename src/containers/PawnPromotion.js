@@ -1,15 +1,5 @@
 import React from 'react';
 import {disablePawnPromotionAction, pawnPromotionReplaceAction } from '../redux/actions';
-
-import blackrook from '../images/pieces/black-rook.png';
-import whiterook from '../images/pieces/white-rook.png';
-import blackqueen from '../images/pieces/black-queen.png';
-import whitequeen from '../images/pieces/white-queen.png';
-import blackbishop from '../images/pieces/black-bishop.png';
-import whitebishop from '../images/pieces/white-bishop.png';
-import blackknight from '../images/pieces/black-knight.png';
-import whiteknight from '../images/pieces/white-knight.png';
-
 import PieceComponent from '../components/Piece';
 import piecesService from '../services/PiecesService';
 import promotionService from '../services/PromotionService';
@@ -28,6 +18,7 @@ class PawnPromotion extends React.Component {
 
     render() {
         const pieceName = promotionService.getPromotedPieceName(this.props.piecesPosition);
+        const color = piecesService.getPieceColor(pieceName);
         return (
             <div className={'pawn-promotion ' + (this.props.pawnPromotion ? '' : 'hidden')} >
                <div className="label">
@@ -38,7 +29,7 @@ class PawnPromotion extends React.Component {
                    <PieceComponent
                         selected={false}  
                         className="row5 columnC"
-                        image={piecesService.getPieceColor(pieceName) === piecesService.WHITE_PIECE ? whiterook : blackrook}
+                        image={piecesService.getImage(piecesService.ROOK+color)}
                         onClick={() => (this.handleClick(pieceName, piecesService.ROOK))}
                     />
                 </div>
@@ -47,7 +38,7 @@ class PawnPromotion extends React.Component {
                     <PieceComponent
                         selected={false}  
                         className="row5 columnD"
-                        image={piecesService.getPieceColor(pieceName) === piecesService.WHITE_PIECE ? whiteknight : blackknight}
+                        image={piecesService.getImage(piecesService.KNIGHT+color)}
                         onClick={() => (this.handleClick(pieceName, piecesService.KNIGHT))}
                     />
                 </div>
@@ -56,7 +47,7 @@ class PawnPromotion extends React.Component {
                     <PieceComponent
                         selected={false}  
                         className="row5 columnE"
-                        image={piecesService.getPieceColor(pieceName) === piecesService.WHITE_PIECE ? whitebishop : blackbishop}
+                        image={piecesService.getImage(piecesService.BISHOP+color)}
                         onClick={() => (this.handleClick(pieceName, piecesService.BISHOP))}
                     />
                 </div>
@@ -65,7 +56,7 @@ class PawnPromotion extends React.Component {
                     <PieceComponent
                         selected={false}  
                         className="row5 columnF"
-                        image={piecesService.getPieceColor(pieceName) === piecesService.WHITE_PIECE ? whitequeen : blackqueen}
+                        image={piecesService.getImage(piecesService.QUEEN+color)}
                         onClick={() => (this.handleClick(pieceName, piecesService.QUEEN))}
                     />
                 </div>
