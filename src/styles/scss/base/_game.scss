@@ -109,7 +109,7 @@ ol, ul {
   background-color: black;
   opacity: 1;
   color: white;
-  height: 250px;
+  height:280px;
 
   h1 {
     text-align: center;
@@ -145,6 +145,10 @@ ol, ul {
       -webkit-appearance: button;
       appearance: button;
       outline: none;
+
+      &.color {
+        margin-top: 8px;
+      }
 
       option {
         padding: 30px;

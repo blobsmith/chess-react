@@ -56,10 +56,10 @@ class Board extends React.Component {
         return className;
     }
 
-    showDot = (letter, number) => {
+    showDot = (position) => {
         let showDot = false;
         if (this.props.configuration['helpmove']) {
-            if (this.props.availableMovements.indexOf(letter + number) !== -1 ) {
+            if (this.props.availableMovements.indexOf(position) !== -1 ) {
                 showDot = true;
             }
         }
@@ -74,6 +74,7 @@ class Board extends React.Component {
             background={this.getBackground(letter, number, reverse, inverseResult)}
             onClick={() => (this.handleMove(position))}
             showDot={this.showDot(position)}
+            showCoordinates={this.props.configuration['showcoordinates']}
         />
     }
 

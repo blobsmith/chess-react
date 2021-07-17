@@ -33,10 +33,21 @@ const { handleSubmit, pristine, reset, submitting } = props;
                     />
             </div>
         </div>
+        <div className="line">
+            <label htmlFor="showcoordinates">Show coordinates:&nbsp;</label>
+            <div className="value">
+                <Field
+                    id="showcoordinates"
+                    name="showcoordinates"
+                    component="input"
+                    type="checkbox"
+                />
+            </div>
+        </div>
         <div className="large-line">
             <label htmlFor="color">Squares color:&nbsp;</label>
             <div className="value box">
-            <Field name="color" component="select" >
+            <Field name="color" component="select" className="color">
                 <option value="black">Black</option>
                 <option value="blue">Blue</option>
                 <option value="brown">Brown</option>

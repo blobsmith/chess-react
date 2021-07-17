@@ -42,7 +42,7 @@ class EnPassantService {
                             // add the pawn to the list of "en passant" pawn movements available
                             newState.push(
                                 {
-                                [piecesService.getPieceName(pawnNear, positionsToTest[index])]: enPassantPosition
+                                [piecesService.getPieceId(pawnNear, positionsToTest[index])]: enPassantPosition
                             }); 
                         }
                         

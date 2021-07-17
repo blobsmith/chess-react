@@ -19,7 +19,7 @@ class Game extends React.Component {
             const name = item[1];
             const color = name.substring(1, 2);
             const type = name.substring(0, 1);
-            const fullName = piecesService.getPieceName(name, position);
+            const fullName = piecesService.getPieceId(name, position);
             const piece = <Piece
                 key={item}
                 color={color}

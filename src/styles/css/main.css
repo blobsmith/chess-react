@@ -4698,7 +4698,7 @@ ol, ul {
   background-color: black;
   opacity: 1;
   color: white;
-  height: 250px; }
+  height: 280px; }
   .game-intro h1,
   .game-outro h1,
   .game-conf h1 {
@@ -4736,6 +4736,10 @@ ol, ul {
       -webkit-appearance: button;
       appearance: button;
       outline: none; }
+      .game-intro .value select.color,
+      .game-outro .value select.color,
+      .game-conf .value select.color {
+        margin-top: 8px; }
       .game-intro .value select option,
       .game-outro .value select option,
       .game-conf .value select option {

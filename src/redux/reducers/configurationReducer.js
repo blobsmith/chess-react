@@ -19,6 +19,7 @@ const configurationReducer = (state = initConf, action) => {
                 color: action.values.color,
                 autoflip: action.values.autoflip,
                 helpmove: action.values.helpmove,
+                showcoordinates: action.values.showcoordinates,
                 status: STATUS_GAME
             };
             return newState;
@@ -41,6 +42,7 @@ const configurationReducer = (state = initConf, action) => {
                     color: action.values.color,
                     autoflip: action.values.autoflip,
                     helpmove: action.values.helpmove,
+                    showcoordinates: action.values.showcoordinates,
                 });
             }
             return newState;

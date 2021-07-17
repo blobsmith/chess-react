@@ -88,7 +88,7 @@ class PiecesService {
      * @param {string} selectedPiece 
      *      the string definition of a piece.
      */
-    getPiece = (selectedPiece) => {
+    getPieceName = (selectedPiece) => {
         return selectedPiece.substring(0,2);
     }
 
@@ -157,14 +157,14 @@ class PiecesService {
     }
 
     /**
-     * Get the complete name of a piece (name-position).
+     * Get the id of a piece (name-position).
      * 
      * @param {string} name 
      *      the string name of a piece.
      * @param {string} position 
      *      the string position of a piece.
      */
-    getPieceName = (name, position) => {
+    getPieceId = (name, position) => {
         return name + '-' + position;
     }
 

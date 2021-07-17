@@ -36,7 +36,7 @@ class PromotionService {
             const piece = piecesMap[position];
             if (piecesService.isPawn(piece)) {
                 if (position.substr(1, 2) === '1' || position.substr(1, 2) === '8') {
-                    pieceName = piecesService.getPieceName(piece, position);
+                    pieceName = piecesService.getPieceId(piece, position);
                 }
             }
         }

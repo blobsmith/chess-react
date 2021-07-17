@@ -75,7 +75,7 @@ class MovementsService {
     playerIsBlocked = (opponentColor, piecesMap) => {
         let isBlocked = true;
         for(const position in piecesMap) {
-            const selectedPiece = piecesService.getPieceName(piecesMap[position], position);
+            const selectedPiece = piecesService.getPieceId(piecesMap[position], position);
             if (piecesService.getPieceColor(selectedPiece) === opponentColor) {
                 let movements = this.getAvailableMovement(selectedPiece, piecesMap);
                 movements = this.removeIllegalMovements(selectedPiece, piecesMap, movements);
@@ -222,7 +222,7 @@ class MovementsService {
         let movements = [];
         for (const position in piecesMap) {
             const pieceName = piecesMap[position];
-            const pieceNameAndPosition = piecesService.getPieceName(pieceName, position);
+            const pieceNameAndPosition = piecesService.getPieceId(pieceName, position);
             const pieceColor = piecesService.getPieceColor(pieceNameAndPosition);
             if (pieceColor === color) {
                 const pieceMovements = this.getAvailableMovement(pieceNameAndPosition, piecesMap);
@@ -543,7 +543,7 @@ class MovementsService {
         let newPiecesMap = Object.assign({}, piecesMap);
         newPiecesMap = this.removePawnOnEnPassantMovement(selectedPiece, targetPosition, newPiecesMap);
         const currentPosition = piecesService.getCurrentPosition(selectedPiece);
-        const currentPiece = piecesService.getPiece(selectedPiece);
+        const currentPiece = piecesService.getPieceName(selectedPiece);
         const currentPieceType = piecesService.getPieceType(selectedPiece);
         if (availableMovements.indexOf(targetPosition) !== -1) {
             delete newPiecesMap[currentPosition];
