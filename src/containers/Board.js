@@ -24,16 +24,16 @@ class Board extends React.Component {
 
     getBackground = (letter, number, reverse, inverseResult = false) => {
         const position = this.getSquareRef(letter, number);
-        let isDark = false;
+        let isDark = true;
         let className;
         if (reverse) {
             if (number%2 !== 0) {
-                isDark = true;
+                isDark = false;
             }
         }
         else {
             if (number%2 === 0) {
-                isDark = true;
+                isDark = false;
             }
         }
 

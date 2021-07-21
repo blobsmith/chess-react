@@ -32,12 +32,12 @@ class MovementsService {
             'F8': 'Bb',
         
             /** Kings **/
-            'D1': 'Kw',
-            'D8': 'Kb',
+            'E1': 'Kw',
+            'E8': 'Kb',
         
             /** Queens **/
-            'E1': 'Qw',
-            'E8': 'Qb',
+            'D1': 'Qw',
+            'D8': 'Qb',
         
             /** white Pawns **/
             'A2': 'Pw',
